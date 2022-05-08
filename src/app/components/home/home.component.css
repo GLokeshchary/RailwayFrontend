@@ -1,0 +1,258 @@
+.hero{
+    height: 350px;
+    background-image: url("./assets/images/Bus_Banner01.jpg");
+    background-repeat: repeat;
+    animation: marquee 50s infinite linear;
+}
+
+@keyframes marquee{
+    0%{
+        background-position: 0;
+    }
+    100%{
+        background-position: -1190px;
+    }
+}
+.train1{
+    position: absolute;
+    top: 210px;
+    left: -20px;
+    animation-name: train1;
+    animation-duration: 7s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+}
+@keyframes train1{
+    from{transform: translateX(-1200px);}
+    to{transform: translateX(1500px);}
+}
+.lines{
+    box-sizing: border-box;
+    border: 4px solid grey;
+    height: 0px;
+    left: 0px;
+    width: 120%;
+    position: absolute;
+    top: 48%;
+  }
+.nav-ul{
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%,-50%);
+    margin: 0;
+    padding: 5px 0px;
+    background: rgb(34, 141, 228);
+    display: flex;
+    border-right: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.3);
+}
+.nav-ul li{
+    list-style: none;
+    text-align: center;
+    margin-left: 55px;
+    display: block;
+    border-right:1px sloid rgba(0,0,0,.3) ;
+}
+.nav-ul li a{
+    text-decoration: none;
+    margin-left: 55px;
+    padding: 0 50px;
+    display: block;
+}
+.nav-ul li a .icon{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    background: #ccc;
+    overflow: hidden;
+    margin: 0 auto 10px;
+
+}
+.nav-ul li a .icon .fa{
+    width: 100%;
+    height: 100%;
+    line-height: 40px;
+    font-size: 34px;
+    transition: 0.5s;
+    color: rgb(182, 23, 76);
+}
+.nav-ul li a .icon .fa:last-child{
+    color:rgb(236, 75, 47)
+}
+.nav-ul li a:hover .icon .fa{
+    transform: translateY(-100%);
+}
+.nav-ul li a .name{
+    position: relative;
+    height: 20px;
+    width: 100%;
+    color: white;
+    display: block;
+}
+.nav-ul li a .name span{
+    display: block;
+    position: relative;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    line-height: 20px;
+    transition: 0.5s;
+    overflow: hidden;
+}
+/* Style the header with a grey background and some padding */
+.header {
+    overflow: hidden;
+    background-color: #f1f1f1;
+    padding: 5px 10px;
+  }
+  
+  /* Style the header links */
+  .header a {
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+  }
+  
+  /* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+  .header .logo {
+      width:50px;
+    font-size: 25px;
+    font-weight: bold;
+  }
+  
+  /* Change the background color on mouse-over */
+  .header a:hover {
+    background-color:rgb(28, 160, 79);
+    color: white;
+  }
+  
+  /* Float the link section to the right */
+  .header-right {
+    float: right;
+    background-color: skyblue;
+    margin-right: 5px;
+  }
+  .header-center{
+      position: absolute;
+      top: 5px;
+      left:500px;
+      color: white;
+      background-color: #2491d5;
+      padding: 5px;
+  }
+  .header-center:hover{
+      background-color:#23E1AF;
+      color: rgb(13, 13, 12);
+  }
+  
+  /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
+  @media screen and (max-width: 500px) {
+    .header a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+    .header-right {
+      float: none;
+      margin: 10px;
+    }
+  }
+  .time{
+    position: absolute;
+    left: 1100px;
+    top: 30px;
+    font-size: large;
+    font-weight: bold;
+}
+.card {
+    position: absolute;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 1.5rem;
+    left: 370px;
+    top: 500px;
+    height: 110px;
+    border: rgb(0, 128, 255) solid;
+}
+.card:hover{
+    background-color: #acd0e7;
+}
+form {
+    display: block;
+    margin-top: 1em;
+}
+.form-in-custom {
+    width: 36%;
+    float: left;
+    margin: 0px 0 0;
+    border-right: 1px solid #dddada;
+    padding: 6px;
+    position: relative;
+}
+.form-in-custom.form-in-custom2 {
+    padding-left: 25px;
+}
+.exchange-icon{
+    position: absolute;
+    left: 240px;
+    top:39px;
+    font-size: 25px;
+    border-radius: 50%;
+    box-shadow: #ccc;
+}
+.form-in-custom3{
+    position: absolute;
+    left: 770px;
+    top: 25px;
+    font-size: large;
+}
+.fa-search{
+    position: absolute;
+    left: 900px;
+    top: 40px;
+    font-size: large;
+}
+
+label{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: black;
+}
+input{
+    border: cornflowerblue solid;
+    border-radius: 10px;
+}
+table{
+    position: absolute;
+    top:650px;
+}
+.container1 {
+    left: 610px;
+  width: 100%;
+  display: flex;
+  position: absolute;
+  top: 450px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.Home-heading {
+    position:absolute;
+    display: block;
+  text-align: center;
+  color: #fff;
+  margin: 0 0 10px;
+  left: 500px;
+}

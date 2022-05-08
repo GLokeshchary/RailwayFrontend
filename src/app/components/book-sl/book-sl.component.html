@@ -1,0 +1,115 @@
+
+<nav class="navbar navbar-expand-lg navclass">
+    <div class="container-fluid">
+      <a class="navbar-brand  header" routerLink="home">
+        <img src="assets/images/trainlogo.jpg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+        ONLINE RAILWAY RESERVATION SYSTEM
+      </a>
+    </div>
+    <div class="navbar-nav">
+        <a class="nav-link active " aria-current="page" href="#">Home</a>
+        <a class="nav-link" routerLink="contact">ContactUs</a>
+        <a class="nav-link" routerLink="about">About</a>
+      </div>
+  </nav>
+  <div class="review1">
+    <div class="text">
+        Review Itinerary
+    </div>
+</div>
+  <div class="main">
+    
+      <div class="review space">
+        
+          <div class="first">
+              <div>{{train.trainName}}</div>
+              <div class="small">{{train.trainNo}}</div>
+          </div>
+          <div class="first">
+              <div>{{train.depatureStation}}</div>
+              <div class="small">{{train.depatureTime}}</div>
+          </div>
+          <div class="first">
+              <div><i class="fa fa-clock-o" aria-hidden="true"></i></div>
+              <div class="small">Duration</div>
+          </div>
+          <div class="first">
+              <div>{{train.arrivalStation}}</div>
+              <div class="small">{{train.arrivalTime}}</div>
+          </div>
+          <div class="first">
+              <div>{{train.quota}}</div>
+          </div>
+      </div>
+      <div class="fare space">
+          <div>Fare BreakUp</div>
+          <div>
+              {{size}} x Passengers {{amount}}
+          </div>
+          <div class="d-grid gap-2"><button class="btn btn-primary">PayNow</button></div>
+      </div>
+  </div>
+<button (click)="onClick()" [disabled]="disable()" class="btn btn-primary pass"> + Add passengers</button>
+<div class="down" *ngIf="isDisabled">Passengers Limit Exceeded:One can book only 7 Passengers Tickets</div>
+<div class="down"  *ngIf="isOpened">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <div class="row align-items-center g-3">
+            <div class="col-auto">
+                <label for="PassengerName">PassengerName</label>
+                <input type="text" class="form-control" placeholder="PassengerName" id="PassengerName" [(ngModel)]="passenger.passenger_name" name="passenger_name">
+            </div>
+            <div class="col-auto">
+                <label for="Age">Age</label>
+                <input type="text" class="form-control" placeholder="Age" id="Age" [(ngModel)]="passenger.age" name="age">
+            </div>
+            <div class="col-auto">
+                <label for="contactNumber">ContactNumber</label>
+                <input type="text" class="form-control" placeholder="contactNumber" id="contactNumber" [(ngModel)]="passenger.contactNumber" name="contactNumber">
+            </div>
+            <div class="col-auto">
+                <label for="gender">Gender</label>
+                <input type="text" class="form-control" placeholder="gender" id="gender" [(ngModel)]="passenger.gender" name="gender">
+            </div>
+            <div class="col-auto">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" placeholder="Email" id="email" [(ngModel)]="passenger.email" name="email">
+            </div>
+            <div class="col-auto">
+                <label for="seat_no">SeatNo</label>
+                <input type="text" class="form-control" placeholder="SeatNo" id="seat_no" [(ngModel)]="passenger.seat_no" name="seat_no">
+            </div>
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-warning down1" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+<div class="box">
+    <div>
+        <h4>Passengers List</h4>
+    </div>
+    <table class = "table table-striped">
+        <thead>
+            <tr>
+                <th>passengerId</th>
+                <th>Passenger_name</th>
+                <th>Age</th>
+                <th>contactNumber</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>SeatNo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let passenger of passengerList ">
+                <td>{{passenger.passengerId}}</td>
+                <td>{{passenger.passenger_name}}</td>
+                <td>{{passenger.age}}</td>
+                <td>{{passenger.contactNumber}}</td>
+                <td>{{passenger.gender}}</td>
+                <td>{{passenger.email}}</td>
+                <td>{{passenger.seat_no}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

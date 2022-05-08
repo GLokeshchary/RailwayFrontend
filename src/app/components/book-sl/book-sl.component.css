@@ -1,0 +1,96 @@
+
+.review{
+    left: 20px;
+    width: 50%;
+    position: relative;
+    top: 10px;
+    background-color: white;
+    display: flex;
+    padding: 20px;
+}
+.review1{
+    left: 20px;
+    width: 50%;
+    position: relative;
+    top: 20px;
+    background-color: grey;
+    height: 50px;
+    font-size: large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border-bottom: white;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+.review .first{
+    padding: 20px;
+    font-size: 20px;
+    border-right:wheat solid;
+}
+.small{
+    font-size: 15px;
+}
+.main{
+    display: flex;
+}
+.fare{
+    width: 45%;
+    background-color: white;
+}
+.space{
+    position: relative;
+    left: 10px;
+    padding: 20px;
+    margin: 10px;
+}
+.review1 .text{
+    position: relative;
+    top: 10px;
+    text-align: center;
+    color: white;
+}
+.pass
+{
+    position: relative;
+    top: 20px;
+    left: 20px;
+}
+.down{
+    position: relative;
+    top: 25px;
+    left: 20px;
+    border: black solid;
+    padding: 10px;
+    width: 90%;
+    background-color: rgb(99, 204, 103);
+    border-radius: 1rem;
+    font-weight: bold;
+}
+label{
+    font-weight: bold;
+}
+.down1{
+    position: relative;
+    top: 10px;
+    left: 570px;
+    border-radius: 1rem;
+}
+.box{
+    position: relative;
+    top: 40px;
+    left:20px;
+    width: 90%;
+    background-color: darkgray;
+    border-radius: 1rem;
+}
+.navclass{
+    background-color:rgba(205, 81, 28, 0.4);
+}
+.navbar-nav a{
+    background-color: chocolate;
+    margin: 10px;
+    color: aliceblue;
+    border-radius: 1rem;
+}
+.header{
+    color: white;
+}

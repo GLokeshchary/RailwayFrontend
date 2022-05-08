@@ -1,0 +1,135 @@
+<div class="header">
+  <img src="assets/images/trainlogo.jpg" class="logo" alt="trainlogo.jpg">
+  <a routerLink="admin" routerLinkActive="active" style="left: 50px;background-color: skyblue;">Admin login</a>
+  <div class="header-center">
+    <h3>ONLINE RAILWAY RESERVATION SYSTEM</h3>
+  </div>
+  <div class="time">
+    {{ date  }}
+  </div>
+  <div class="header-right">
+    <a href="">Login</a>
+    <a href="">Signup</a>
+  </div>
+</div>
+<div class="hero">
+  <div>
+       <div class="train1">
+           <img src="assets/images/besttrain.png" alt="train.jpg">
+           </div>
+           <div class="lines"></div>
+       </div>  
+  </div>
+  <div class="1">
+    <div>
+        <ul class="nav-ul">
+            <li>
+                <a routerLinkActive="active" routerLink="home">
+                    <div class="icon">
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                    </div>
+                    <div class="name" ><span data-text="Home">Home</span></div>
+                </a>
+            </li>
+            <li>
+                <a (click)="onClick1()">
+                    <div class="icon">
+                        <i class="fa fa-phone-square" aria-hidden="true"></i>
+                        <i class="fa fa-phone-square" aria-hidden="true"></i>
+                    </div>
+                    <div class="name"><span data-text="Contact">Contact</span></div>
+                </a>
+            </li>
+            <li>
+                <a (click)="onClick2()">
+                    <div class="icon">
+                        <i class="fa fa-book" aria-hidden="true"></i>
+                        <i class="fa fa-book" aria-hidden="true"></i>
+                    </div>
+                    <div class="name"><span data-text="BookedTickets">BookedTickets</span></div>
+                </a>
+            </li>
+            <li>
+                <a >
+                    <div class="icon">
+                        <i class="fa fa-users" aria-hidden="true"></i>
+                        <i class="fa fa-users" aria-hidden="true"></i>
+                    </div>
+                    <div class="name" ><span data-text="Team">Team</span></div>
+                </a>
+            </li>
+            <li>
+                <a routerLinkActive="active" routerLink="about">
+                    <div class="icon">
+                        <i class="fa fa-train" aria-hidden="true"></i>
+                        <i class="fa fa-train" aria-hidden="true"></i>
+                    </div>
+                    <div class="name" ><span data-text="Team">About</span></div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    </div>
+<div class="container1">
+    <div class="Home-Heading">
+      <h3>
+          <i class="fa fa-train" aria-hidden="true"></i>
+          Book Train Ticket
+      </h3>
+  </div>
+  </div>
+    <div class="card">
+        <form #userForm="ngForm" novalidate (ngSubmit)="onSubmit(userForm)" >
+          <div class="form-in-custom form-group">
+            <label for="DepartFrom">Depart From</label>
+            <input required list="DepartFroms" id="DepartFrom" #DepartFrom="ngModel" [class.is-invalid]="DepartFrom.invalid && DepartFrom.touched " name="DepartFrom" [(ngModel)]="demo1" />
+            <datalist id="DepartFroms" >
+              <option *ngFor="let list of DepartFromList" value="{{list}}"></option>
+          </datalist>
+          </div>
+          <div class="exchange-icon"><i (click)="onSwap(demo1,demo2)"  class="fas fa-exchange-alt"></i></div>
+          <div class="form-in-custom form-in-custom2">
+            <label for="goingTo">GoingTo</label>
+            <input required list="goingTos" id="goingTo" #goingTo="ngModel" [class.is-invalid]="goingTo.invalid && goingTo.touched" name="goingTo" [(ngModel)]="demo2" />
+            <datalist id="goingTos" >
+              <option *ngFor="let list of DepartFromList" value="{{list}}">{{list}}</option>
+          </datalist>
+          </div>
+          <div class="form-in-custom4">
+            <label for="Date">Departure Date</label>
+            <input required  type="date" name="Date" ngModel placeholder="Date" id="Date">
+          </div>
+          <div class="form-in-custom3">
+            <label for=""></label>
+            <button [disabled]="userForm.form.invalid"  type="submit" class="btn btn-outline-success" style="background-color: yellow;">Search</button>
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </div>
+          
+        </form>
+      </div>
+<div *ngIf="isSubmitted">
+    <table  class = "table table-striped">
+        <thead>
+            <tr>
+                <th>TrainNo</th>
+                <th> TrainName </th>
+                <th> DepatureStation</th>
+                <th> ArrivalStation</th>
+                <th> Actions </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let train of trains" >
+                <td> {{ train.trainNo }} </td>
+                <td> {{ train.trainName }} </td>
+                <td> {{ train.depatureStation }} </td>
+                <td> {{ train.arrivalStation }} </td>
+                <td>
+                  <button (click)="bookTrain(train.trainNo!,train.classes!)" class="btn btn-info">Book SL</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
