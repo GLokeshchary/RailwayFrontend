@@ -2,16 +2,17 @@ import { Passenger } from "./passenger";
 import { Seat } from "./seat";
 
 export class Ticket {
-    ticketId:string | undefined;
-    pnr?:number;
-    trainNo:string | undefined;
-    trainName:string|undefined;
-    start:string | undefined;
-    destination:string|undefined;
-    departure_time:string|undefined;
-    arrival_time:string|undefined;
-    passengers:Passenger[]|undefined;
-    quota:string|undefined;
-    status:string|undefined;
-    transactional_id:number|undefined;
+    public ticketId:string|undefined;
+        public pnr:number|undefined;
+        public trainNo:string|undefined;
+        public trainName:string|undefined;
+        public start:string|undefined;
+        public destination:string|undefined;
+        public departure_time:string|undefined;
+        public arrival_time:string|undefined;
+        public passengers: Passenger[] | undefined;
+        public  quota:string|undefined;
+        public status:string|undefined;
+        public  transactional_id:number|undefined;
+    
 }

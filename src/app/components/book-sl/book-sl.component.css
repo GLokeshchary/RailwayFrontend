@@ -1,39 +1,8 @@
 
-.review{
-    left: 20px;
-    width: 50%;
-    position: relative;
-    top: 10px;
-    background-color: white;
-    display: flex;
-    padding: 20px;
-}
-.review1{
-    left: 20px;
-    width: 50%;
-    position: relative;
-    top: 20px;
-    background-color: grey;
-    height: 50px;
-    font-size: large;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    border-bottom: white;
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
-}
-.review .first{
-    padding: 20px;
-    font-size: 20px;
-    border-right:wheat solid;
-}
-.small{
-    font-size: 15px;
-}
-.main{
-    display: flex;
-}
+
 .fare{
-    width: 45%;
+    width: 35%;
+    margin-left: 200px;
     background-color: white;
 }
 .space{
@@ -41,19 +10,10 @@
     left: 10px;
     padding: 20px;
     margin: 10px;
+    margin-left: 200px;
 }
-.review1 .text{
-    position: relative;
-    top: 10px;
-    text-align: center;
-    color: white;
-}
-.pass
-{
-    position: relative;
-    top: 20px;
-    left: 20px;
-}
+
+
 .down{
     position: relative;
     top: 25px;
@@ -94,3 +54,13 @@ label{
 .header{
     color: white;
 }
+.parent {
+    display: grid;
+    grid-template-columns: repeat(6, 2fr);
+    grid-template-rows: repeat(5, 2fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    }
+    
+    .div1 { grid-area: 1 / 1 / 2 / 2; }
+    .div2 { grid-area: 1 / 5 / 2 / 6; }

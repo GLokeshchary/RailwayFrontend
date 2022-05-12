@@ -1,21 +1,22 @@
-import { Ticket } from "./ticket";
+import { Passenger } from "./passenger";
+
 
 export class BookedTicket {
-    private bookId?: string | undefined;
-    private _ticket?: Ticket | undefined;
-    transactional_id?:number;
-    account_no?:number;
-    email_address?:string;
-    status?:string;
-    booking_time?:Date;
-    amount?:number;
-
-
-    public get ticket(): Ticket | undefined {
-        return this._ticket;
-    }
-    public set ticket(value: Ticket | undefined) {
-        this._ticket = value;
-    }
+        public bookId?: string;
+        public pnr:number|undefined;
+        public trainNo:string|undefined;
+        public trainName:string|undefined;
+        public start:string|undefined;
+        public destination:string|undefined;
+        public departure_time:string|undefined;
+        public arrival_time:string|undefined;
+        public passengers: Passenger[] | undefined;
+        public  quota:string|undefined;
+        public status:string|undefined;
+        public transactional_id:number|undefined;
+        public account_no:number|undefined;
+        public email_address:string|undefined;
+        public booking_time:Date|undefined;
+        public amount:number|undefined;
 
 }

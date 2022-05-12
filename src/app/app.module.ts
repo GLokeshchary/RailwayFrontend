@@ -10,6 +10,23 @@ import { BookedTicketsComponent } from './components/booked-tickets/booked-ticke
 import { AboutComponent } from './components/about/about.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { BookSLComponent } from './components/book-sl/book-sl.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { AddTrainComponent } from './components/add-train/add-train.component';
+import { FaqComponent } from './components/faq/faq.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { TrainListComponent } from './components/train-list/train-list.component';
+import { BookAc3Component } from './components/book-ac3/book-ac3.component';
+import { BookAc2Component } from './components/book-ac2/book-ac2.component';
+import { BookAc1Component } from './components/book-ac1/book-ac1.component';
+import { BookSsComponent } from './components/book-ss/book-ss.component';
+
 
 @NgModule({
   declarations: [
@@ -19,14 +36,30 @@ import { BookSLComponent } from './components/book-sl/book-sl.component';
     BookedTicketsComponent,
     AboutComponent,
     AdminComponent,
-    BookSLComponent
+    BookSLComponent,
+    LoginComponent,
+    RegisterComponent,
+    ProfileComponent,
+    AdminDashboardComponent,
+    AddTrainComponent,
+    FaqComponent,
+    FooterComponent,
+    NavbarComponent,
+    PageNotFoundComponent,
+    TrainListComponent,
+    BookAc3Component,
+    BookAc2Component,
+    BookAc1Component,
+    BookSsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -256,3 +256,7 @@ table{
   margin: 0 0 10px;
   left: 500px;
 }
+.footer{
+    position: absolute;
+    top:1000px;
+}

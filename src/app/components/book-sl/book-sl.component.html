@@ -12,47 +12,19 @@
         <a class="nav-link" routerLink="about">About</a>
       </div>
   </nav>
-  <div class="review1">
-    <div class="text">
-        Review Itinerary
-    </div>
-</div>
-  <div class="main">
-    
-      <div class="review space">
-        
-          <div class="first">
-              <div>{{train.trainName}}</div>
-              <div class="small">{{train.trainNo}}</div>
-          </div>
-          <div class="first">
-              <div>{{train.depatureStation}}</div>
-              <div class="small">{{train.depatureTime}}</div>
-          </div>
-          <div class="first">
-              <div><i class="fa fa-clock-o" aria-hidden="true"></i></div>
-              <div class="small">Duration</div>
-          </div>
-          <div class="first">
-              <div>{{train.arrivalStation}}</div>
-              <div class="small">{{train.arrivalTime}}</div>
-          </div>
-          <div class="first">
-              <div>{{train.quota}}</div>
-          </div>
-      </div>
+  
       <div class="fare space">
           <div>Fare BreakUp</div>
-          <div>
-              {{size}} x Passengers {{amount}}
-          </div>
-          <div class="d-grid gap-2"><button class="btn btn-primary">PayNow</button></div>
+        <div class="parent">
+            <div class="div1">Ticket Fare </div>
+            <div class="div2"><div>{{size}} x Passengers={{ticketFare}}</div></div>
+        </div>
+          <div class="d-grid gap-2"><button (click)="BookNow(train.trainNo!)" class="btn btn-primary">PayNow</button></div>
       </div>
-  </div>
 <button (click)="onClick()" [disabled]="disable()" class="btn btn-primary pass"> + Add passengers</button>
 <div class="down" *ngIf="isDisabled">Passengers Limit Exceeded:One can book only 7 Passengers Tickets</div>
 <div class="down"  *ngIf="isOpened">
-    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
         <div class="row align-items-center g-3">
             <div class="col-auto">
                 <label for="PassengerName">PassengerName</label>
@@ -101,7 +73,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let passenger of passengerList ">
+            <tr *ngFor="let passenger of passengerList">
                 <td>{{passenger.passengerId}}</td>
                 <td>{{passenger.passenger_name}}</td>
                 <td>{{passenger.age}}</td>

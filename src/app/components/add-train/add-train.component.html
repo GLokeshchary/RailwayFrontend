@@ -1,0 +1,65 @@
+<form #t="ngForm" class="well form-horizontal" (ngSubmit)="onSubmit()" >
+    <div class="col-md-4">
+        <div class="form-group">
+            <label for="">TrainNo : </label>
+            <input class="form-control" type="text" placeholder="trainNo" #trainNo="ngModel"
+                [class.is-invalid]="trainNo.invalid && trainNo.touched" [(ngModel)]="train.trainNo" name="trainNo">
+        </div>
+        <div class="form-group">
+            <label for="trainName">TrainName : </label>
+            <input id="trainName" class="form-control" type="text" #trainName="ngModel"
+            [class.is-invalid]="trainName.invalid && trainName.touched" [(ngModel)]="train.trainName" placeholder="TrainName" required name="trainName">
+        </div>
+        <div class="form-group">
+            <label for="DepartFrom">DepartFrom</label>
+            <input class="form-control" required list="DepartFrom" id="DepartFrom" #DepartFrom="ngModel"
+                [class.is-invalid]="DepartFrom.invalid && DepartFrom.touched" placeholder="DepartFrom"
+                [(ngModel)]="train.depatureStation" name="DepartFrom">
+            <datalist id="DepartFrom">
+                <option *ngFor="let list of DepartFromList" value="{{list}}"></option>
+            </datalist>
+        </div>
+        <div class="form-group">
+            <label for="goingTo">ArrivalTo</label>
+            <input class="form-control" required list="goingTo" id="goingTo" #goingTo="ngModel"
+                [class.is-invalid]="goingTo.invalid && goingTo.touched" placeholder="goingTo"
+                [(ngModel)]="train.arrivalStation" name="goingTo">
+            <datalist id="goingTo">
+                <option *ngFor="let list of DepartFromList" value="{{list}}"></option>
+            </datalist>
+        </div>
+        <div class="form-group">
+            <label for="DepartureDate">DepartureTime : </label>
+            <input id="DepartureDate" class="form-control" #DepartureDate="ngModel"
+            [class.is-invalid]="DepartureDate.invalid && DepartureDate.touched" type="time" [(ngModel)]="train.depatureTime" placeholder="depatureTime" required name="DepartureDate">
+        </div>
+        <div class="form-group">
+            <label for="arrivalTime">ArrivalTime : </label>
+            <input id="arrivalTime" class="form-control" #arrivalTime="ngModel"
+            [class.is-invalid]="arrivalTime.invalid && arrivalTime.touched" type="time" [(ngModel)]="train.arrivalTime" placeholder="arrivalTime" required name="arrivalTime">
+        </div>
+        <div class="form-group">
+            <label for="quota">Quota : </label>
+            <input id="quota" class="form-control" type="text" #quota="ngModel"
+            [class.is-invalid]="quota.invalid && quota.touched" [(ngModel)]="train.quota" placeholder="quota" required name="quota">
+        </div>
+        <div><label for="rundays">RunDays</label></div>
+        <div>
+            <select multiple size="6" [(ngModel)]="train.run_days" #rundays="ngModel"
+            [class.is-invalid]="rundays.invalid && rundays.touched" name="rundays">
+                <option value="SUN">Sunday</option>
+                <option value="MON">Monday</option>
+                <option value="TUE">Tuesday</option>
+                <option value="WED">Wednesday </option>
+                <option value="THU">Thursday</option>
+                <option value="FRI">Friday </option>
+                <option value="SAT">Saturday </option>
+      </select>
+        </div>
+        <div>
+            <label for="classes">Classes</label>
+            
+        </div>
+        <div><button type="submit">Submit</button></div>
+    </div>
+</form>

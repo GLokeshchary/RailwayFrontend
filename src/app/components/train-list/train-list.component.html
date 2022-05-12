@@ -1,0 +1,27 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>TrainNo</th>
+            <th>TrainName</th>
+            <th>From</th>
+            <th>To</th>
+            <th>DepartureTime</th>
+            <th>ArrivalTime</th>
+            <th>Classes</th>
+            <th>Quota</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let train of trains">
+            <td> {{ train.trainNo }} </td>
+            <td> {{ train.trainName }} </td>
+            <td> {{ train.depatureStation }} </td>
+            <td> {{ train.arrivalStation }} </td>
+            <td> {{ train.depatureTime}}</td>
+            <td> {{ train.arrivalTime}}</td>
+            <td>{{ train.classes}}</td>
+            <td>{{train.quota}}</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Seat } from 'src/app/models/seat';
@@ -21,11 +22,14 @@ export class HomeComponent implements OnInit {
   demo1:any;
   demo2:any;
   date:Date | undefined; 
+  now:any;
   constructor(private trainservice:TrainService,private route:Router) {
     
    }
 
   ngOnInit(): void {
+    const datePipe = new DatePipe('en-Us');
+    this.now = datePipe.transform(new Date(), 'yyyy-MM-dd');
   }
   onSwap(demo1: any,demo2: any){
     this.demo1=demo1;
@@ -51,7 +55,13 @@ export class HomeComponent implements OnInit {
     this.route.navigate(["/contact"]);
   }
   onClick2():void{
-    this.route.navigate(['/bookedTickets'])
+    this.route.navigate(['/bookedTickets']);
+  }
+  Admin(){
+    this.route.navigate(['/admindashboard']);
+  }
+  login(){
+    this.route.navigate(['/login']);
   }
 
   bookTrain(trainNo:string,classes:Map<String,Seat>){

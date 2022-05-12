@@ -1,0 +1,13 @@
+<nav>
+    <ul>
+        <li class="logo"><img src="https://i.imgur.com/E26Pj54.png"></li>
+        <li><a (click)="home()"><i class="fa fa-home"></i>&nbsp;  Home</a></li>
+        <li><a (click)="trainList()"><i class="fa fa-book"></i>&nbsp;  Trains</a></li>
+        <li><a (click)="addtrain()"><i class="fa fa-train" aria-hidden="true"></i>&nbsp;  Add Train</a></li>
+        <li><a href="#"><i class="fa fa-users"></i>&nbsp;  Users</a></li>
+        <li><a href="#"><i class="fa fa-phone"></i>&nbsp; Contact</a></li>
+    </ul>
+</nav>
+<div class="wrapper">
+    <router-outlet></router-outlet>
+</div>

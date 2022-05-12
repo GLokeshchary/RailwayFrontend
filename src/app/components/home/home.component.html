@@ -1,6 +1,6 @@
 <div class="header">
   <img src="assets/images/trainlogo.jpg" class="logo" alt="trainlogo.jpg">
-  <a routerLink="admin" routerLinkActive="active" style="left: 50px;background-color: skyblue;">Admin login</a>
+  <a (click)="Admin()" style="left: 50px;background-color: skyblue;">Admin login</a>
   <div class="header-center">
     <h3>ONLINE RAILWAY RESERVATION SYSTEM</h3>
   </div>
@@ -8,7 +8,7 @@
     {{ date  }}
   </div>
   <div class="header-right">
-    <a href="">Login</a>
+    <a (click)="login()">Login</a>
     <a href="">Signup</a>
   </div>
 </div>
@@ -98,7 +98,7 @@
           </div>
           <div class="form-in-custom4">
             <label for="Date">Departure Date</label>
-            <input required  type="date" name="Date" ngModel placeholder="Date" id="Date">
+            <input required  type="date" [min]="now" name="Date" ngModel placeholder="Date" id="Date">
           </div>
           <div class="form-in-custom3">
             <label for=""></label>
@@ -132,4 +132,6 @@
         </tbody>
     </table>
 </div>
-
+<div class="footer">
+    <app-footer></app-footer>
+</div>
