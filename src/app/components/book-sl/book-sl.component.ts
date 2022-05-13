@@ -1,3 +1,4 @@
+import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -32,7 +33,12 @@ export class BookSLComponent implements OnInit {
   price:number|any;
   size:number=0;
   ticketFare:number|undefined;
-  
+  ConvenienceFee:number=35.40;
+  AgentServiceCharges=25.39;
+  totalamount:number|undefined;
+  duration:any;
+  isEdited:boolean=false;
+  isSubmitted:boolean=true;
 
   random:string|undefined;
 
@@ -45,6 +51,7 @@ export class BookSLComponent implements OnInit {
     this.bookTicket.bookId="14523";
     this.bookTicket.userId="158233";
     this.trainservice.getValues(this.trainNo!,this.coach).subscribe(data=>this.values=data);
+    
   }
     
   disable(){
@@ -68,6 +75,7 @@ export class BookSLComponent implements OnInit {
 
   onSubmit(f:NgForm){
     
+    console.log(this.totalamount);
     
      this.bookservice.savePassengers(f.value).subscribe(data=>console.log(data));
      this.passengerList.push(f.value);
@@ -82,19 +90,27 @@ export class BookSLComponent implements OnInit {
     
     this.ticketFare=this.price*this.size;
     console.log(this.ticketFare);
+    this.totalamount=this.ticketFare!+this.ConvenienceFee+this.AgentServiceCharges;
+    
     if (this.disable()) {
       this.onClick();
     }
     this.onClick();
   }
 
-
-
   onClick(){
     this.isOpened=!this.isOpened;
   }
+
   BookNow(trainNo:string){
+    
     this.bookservice.bookTicketByTrainNo2(this.bookTicket!,trainNo,this.coach).subscribe(data=>console.log(data));
     
+  }
+  updatePassenger(id:string){
+    this.onClick();
+    this.isEdited=true;
+    this.isSubmitted=false;
+    this.bookservice.getPassengerById(id).subscribe(data=>this.passenger=data);
   }
 }

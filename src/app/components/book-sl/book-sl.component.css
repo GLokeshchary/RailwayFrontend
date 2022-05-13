@@ -1,26 +1,72 @@
 
 
-.fare{
-    width: 35%;
-    margin-left: 200px;
-    background-color: white;
-}
-.space{
-    position: relative;
-    left: 10px;
-    padding: 20px;
-    margin: 10px;
-    margin-left: 200px;
-}
+.boxes2{
+    display: flex;
 
+}
+.boxes2 .traindetails{
+    width: 60%;
+    height: 120px;
+    background-color: white;
+    margin: 20px;
+    border: 5px solid rgb(22, 136, 174);
+    border-radius: 1rem;
+    
+}
+.boxes2 .ticketfare{
+    width: 40%;
+    background-color: rgb(178, 197, 234);
+    margin: 20px;
+    border: 5px solid burlywood;
+    border-radius: 1rem;
+}
+.traindetails .train{
+    display: flex;
+    padding-right: 100px;
+    font-size: large;
+}
+.traindetails .train .row12{
+    margin: 40px;
+}
+.row12 img{
+    position: relative;
+    top: -5px;
+    width: 35px;
+}
+.ticketfare .breakup{
+    display: flex;
+    margin: 10px;
+    font-weight: bold;
+    border-bottom: 1px solid white;
+    padding: 8px;
+}
+.breakup .left{
+    
+    width: 60%;
+}
+.breakup .right{
+    
+    width:40%;
+    text-align: right;
+}
+.pay{
+    width: 100%;
+    text-align: center;
+}
+.pass{
+    position: absolute;
+    top: 230px;
+    left: 10px;
+    border:solid white;
+}
 
 .down{
-    position: relative;
-    top: 25px;
-    left: 20px;
+    position: absolute;
+    top: 300px;
+    left: 5px;
     border: black solid;
     padding: 10px;
-    width: 90%;
+    width: 60%;
     background-color: rgb(99, 204, 103);
     border-radius: 1rem;
     font-weight: bold;
@@ -30,16 +76,16 @@ label{
 }
 .down1{
     position: relative;
-    top: 10px;
     left: 570px;
+    top: 10px;
     border-radius: 1rem;
 }
 .box{
     position: relative;
-    top: 40px;
-    left:20px;
-    width: 90%;
-    background-color: darkgray;
+    top: 60px;
+    left:10px;
+    width: 100%;
+    background-color: gray;
     border-radius: 1rem;
 }
 .navclass{
@@ -54,13 +100,6 @@ label{
 .header{
     color: white;
 }
-.parent {
-    display: grid;
-    grid-template-columns: repeat(6, 2fr);
-    grid-template-rows: repeat(5, 2fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    }
-    
-    .div1 { grid-area: 1 / 1 / 2 / 2; }
-    .div2 { grid-area: 1 / 5 / 2 / 6; }
+.gender{
+    display: flex;
+}

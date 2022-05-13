@@ -31,8 +31,16 @@ export class BookService {
     const url=`http://localhost:3333/customer/getAllPassengers`;
     return this.http.get<Passenger[]>(`${url}`);
   }
+  getPassengerById(passengerId:string):Observable<Passenger>{
+    const url=`http://localhost:3333/customer/getPassengerById/${passengerId}`;
+    return this.http.get<Passenger>(`${url}`);
+  }
+  updatePassengerById(passengerId:string,passenger:Passenger):Observable<Passenger>{
+    const url=`http://localhost:3333/customer/updatePassengerById/${passengerId}`;
+    return this.http.put<Passenger>(`${url}`,passenger);
+  }
   deleteAllPassengers(){
-    const url=`http://localhost:3333/customer/deleteAllPassengerList`
+    const url=`http://localhost:3333/customer/deleteAllPassengerList`;
     return this.http.delete(`${url}`);
   }
 }
