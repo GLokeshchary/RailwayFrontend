@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import { Seat } from 'src/app/models/seat';
 import { Train } from 'src/app/models/train';
 import { TrainService } from 'src/app/services/train.service';
-
+import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -23,13 +24,22 @@ export class HomeComponent implements OnInit {
   demo2:any;
   date:Date | undefined; 
   now:any;
-  constructor(private trainservice:TrainService,private route:Router) {
+  content?: any;
+  constructor(private trainservice:TrainService,private route:Router,private userService:UserService) {
     
    }
 
   ngOnInit(): void {
     const datePipe = new DatePipe('en-Us');
     this.now = datePipe.transform(new Date(), 'yyyy-MM-dd');
+    this.userService.getPublicContent().subscribe(
+      data => {
+        this.content = data;
+      },
+      err => {
+        this.content = JSON.parse(err.error).message;
+      }
+    );
   }
   onSwap(demo1: any,demo2: any){
     this.demo1=demo1;
@@ -48,6 +58,7 @@ export class HomeComponent implements OnInit {
     this.goingTo=userForm.value.goingTo;
     this.Date=userForm.value.Date;
     console.log(this.DepartFrom);
+    
 
     this.trainservice.getTrainsBetweenStations(this.DepartFrom,this.goingTo).subscribe(data=>this.trains=data);
   }
@@ -63,9 +74,27 @@ export class HomeComponent implements OnInit {
   login(){
     this.route.navigate(['/login']);
   }
+  signup(){
+    this.route.navigate(['/register']);
+  }
 
   bookTrain(trainNo:string,classes:Map<String,Seat>){
-    this.route.navigate(['/bookSL',trainNo]);
+    Swal.fire({
+      title: 'Do you want to open the bookPage?',
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'open',
+      denyButtonText: `Don't open`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.route.navigate(['/bookSL',trainNo]);
+        Swal.fire('opened!', '', 'success')
+      } else if (result.isDenied) {
+        Swal.fire('Changes are not saved', '', 'info')
+      }
+    })
+    
   }
 
 }

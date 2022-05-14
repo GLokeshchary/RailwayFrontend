@@ -1,1 +1,30 @@
-<p>faq works!</p>
+<div class="faq">
+    <div class="header"><h1>FAQ</h1></div>
+    <div class="display">
+        <div class="left">
+            <div class="long"><button (click)="isOpened0()" mat-raised-button>What are the Advantages of Online Rail booking?</button></div>
+            <div *ngIf="isOpenend0" class="long">
+                <ul>
+                    <li>There are many advantages of online Rail ticket booking.</li>
+                    <li>You can choose your preferred seats.</li>
+                    <li>Online rail ticket booking keeps you away from the long queues of the offline ticket counters.</li>
+                    <li>You can view plenty of trains and choose an appropriate train for your travel considering the seats available.</li>
+                    <li>Your tickets can be booked at a reasonable price with multiple payment options.</li>
+                </ul>
+            </div>
+            <div class="long"><button mat-raised-button (click)="isOpened1()">Do I Need to create an account to book train tickets on GoTrains?</button></div>
+            <div *ngIf="isOpenend1" class="long">GoTrains login credentials can be used for booking the train tickets. In case, customer does not have GoTrains login he can book through  user login by providing required email id and mobile no.</div>
+            <div class="long"><button (click)="isOpened2()" mat-raised-button>Can I cancel my Train Ticket at anyTime?</button></div>
+            <div *ngIf="isOpenend2" class="long">Yes, you can. Cancellations can only be done online for online bookings through localhost:4200/cancel</div>
+        </div>
+        <div class="right">
+            <div class="long"><button (click)="isOpened3()" mat-raised-button>How Many Passengers Can be Booked in one transaction?</button></div>
+            <div *ngIf="isOpenend3" class="long">Maximum 6 passengers can be booked in one transaction.</div>
+            <div class="long"><button (click)="isOpened4()" mat-raised-button>Is name Change or gender change permissible?</button></div>
+            <div *ngIf="isOpenend4" class="long">No, name change or gender change is not allowed. In case of changes, it is to be cancelled and go for fresh booking.</div>
+            <div class="long"><button (click)="isOpened5()" mat-raised-button>Can we change / modify dates after booking?</button></div>
+            <div *ngIf="isOpenend5" class="long">No. In such cases booking needs to be cancelled and to be rebooked. Cancellation charges as per policy shall levy.</div>
+
+        </div>
+    </div>
+</div>

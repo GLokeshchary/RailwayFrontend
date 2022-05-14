@@ -11,5 +11,23 @@ export class FooterComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  home(){
+
+  }
+  about(){
+
+  }
+  ContactUs(){
+
+  }
+  search(){
+
+  }
+  BookedTickets(){
+
+  }
+  FAQ(){
+    
+  }
 
 }

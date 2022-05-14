@@ -28,7 +28,8 @@ import { BookAc2Component } from './components/book-ac2/book-ac2.component';
 import { BookAc1Component } from './components/book-ac1/book-ac1.component';
 import { BookSsComponent } from './components/book-ss/book-ss.component';
 import {MatRadioModule} from '@angular/material/radio';
-
+import { UpdatepassengerComponent } from './components/updatepassenger/updatepassenger.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,9 @@ import {MatRadioModule} from '@angular/material/radio';
     BookAc3Component,
     BookAc2Component,
     BookAc1Component,
-    BookSsComponent
+    BookSsComponent,
+    UpdatepassengerComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,

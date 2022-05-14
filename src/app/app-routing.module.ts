@@ -13,21 +13,29 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { RegisterComponent } from './components/register/register.component';
 import { TrainListComponent } from './components/train-list/train-list.component';
+import { UpdatepassengerComponent } from './components/updatepassenger/updatepassenger.component';
 
 const routes: Routes = [
-  {path:"bookSL/:trainNo",component:BookSLComponent},
+  {path:"register",component:RegisterComponent},
+  {path:"bookSL/:trainNo",component:BookSLComponent,children:[{path:"updatePassenger/:id",component:UpdatepassengerComponent}]},
   {path:"home",component:HomeComponent},
   {path:"contact",component:ContactComponent},
   {path:"bookedTickets",component:BookedTicketsComponent},
   {path:"about",component:AboutComponent},
   {path:"admin",component:AdminComponent},
   {path:"login",component:LoginComponent},
+  {path:"profile",component:ProfileComponent},
   {path:"admindashboard",component:AdminDashboardComponent,children:[{path:"createtrain",component:AddTrainComponent},
                                                                      {path:"Trainlist",component:TrainListComponent}]},
   {path:"faq",component:FaqComponent},
   {path:"footer",component:FooterComponent},
+  {path:"payment",component:PaymentComponent},
   {path:"navbar",component:NavbarComponent},
+  
   {path:'',redirectTo:"home",pathMatch:"full"}
 ];
 

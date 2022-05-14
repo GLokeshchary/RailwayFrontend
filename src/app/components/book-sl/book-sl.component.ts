@@ -1,7 +1,7 @@
 import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BookTicket } from 'src/app/models/book-ticket';
 import { BookedTicket } from 'src/app/models/booked-ticket';
 import { Passenger } from 'src/app/models/passenger';
@@ -11,6 +11,7 @@ import { Train } from 'src/app/models/train';
 import { Values } from 'src/app/models/values';
 import { BookService } from 'src/app/services/book.service';
 import { TrainService } from 'src/app/services/train.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-book-sl',
@@ -20,6 +21,7 @@ import { TrainService } from 'src/app/services/train.service';
 export class BookSLComponent implements OnInit {
 
   passenger:Passenger=new Passenger();
+  passenger2:Passenger=new Passenger();
   bookTicket:BookTicket=new BookTicket();
   bookedTicket:BookedTicket=new BookedTicket();
   values:Values=new Values();
@@ -39,10 +41,12 @@ export class BookSLComponent implements OnInit {
   duration:any;
   isEdited:boolean=false;
   isSubmitted:boolean=true;
+  passengerid:string|undefined;
+  openupdate:boolean=false;
 
   random:string|undefined;
 
-  constructor(private bookservice:BookService,private route:ActivatedRoute,private trainservice:TrainService) { }
+  constructor(private bookservice:BookService,private route:ActivatedRoute,private router:Router,private trainservice:TrainService) { }
 
   ngOnInit(): void {
     
@@ -99,7 +103,11 @@ export class BookSLComponent implements OnInit {
   }
 
   onClick(){
+    this.isSubmitted=true;
     this.isOpened=!this.isOpened;
+  }
+  onedit(f:NgForm){
+
   }
 
   BookNow(trainNo:string){
@@ -108,9 +116,7 @@ export class BookSLComponent implements OnInit {
     
   }
   updatePassenger(id:string){
-    this.onClick();
-    this.isEdited=true;
-    this.isSubmitted=false;
-    this.bookservice.getPassengerById(id).subscribe(data=>this.passenger=data);
+    this.openupdate=true;
+    this.bookservice.getPassengerById(id).subscribe(data=>this.passenger2=data);
   }
 }

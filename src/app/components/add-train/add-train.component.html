@@ -1,52 +1,50 @@
 <form #t="ngForm" class="well form-horizontal" (ngSubmit)="onSubmit()" >
-    <div class="col-md-4">
+    <div class="col-md-10">
         <div class="form-group">
             <label for="">TrainNo : </label>
-            <input class="form-control" type="text" placeholder="trainNo" #trainNo="ngModel"
-                [class.is-invalid]="trainNo.invalid && trainNo.touched" [(ngModel)]="train.trainNo" name="trainNo">
+            <input required class="form-control" type="text" placeholder="trainNo" #trainNo="ngModel" [(ngModel)]="train.trainNo" name="trainNo">
+            <small *ngIf="trainNo.errors?.['required'] && (trainNo?.dirty || trainNo?.touched)" class="text-danger">trainNo is required</small>
         </div>
         <div class="form-group">
             <label for="trainName">TrainName : </label>
-            <input id="trainName" class="form-control" type="text" #trainName="ngModel"
-            [class.is-invalid]="trainName.invalid && trainName.touched" [(ngModel)]="train.trainName" placeholder="TrainName" required name="trainName">
+            <input id="trainName" class="form-control" type="text" #trainName="ngModel" [(ngModel)]="train.trainName" placeholder="TrainName" required name="trainName">
+            <small *ngIf="trainName.errors?.['required'] && (trainName?.dirty || trainName?.touched)" class="text-danger">trainName is required</small>
         </div>
         <div class="form-group">
             <label for="DepartFrom">DepartFrom</label>
-            <input class="form-control" required list="DepartFrom" id="DepartFrom" #DepartFrom="ngModel"
-                [class.is-invalid]="DepartFrom.invalid && DepartFrom.touched" placeholder="DepartFrom"
+            <input class="form-control" required list="DepartFrom" id="DepartFrom" #DepartFrom="ngModel" placeholder="DepartFrom"
                 [(ngModel)]="train.depatureStation" name="DepartFrom">
+                <small *ngIf="DepartFrom.errors?.['required'] && (DepartFrom?.dirty || DepartFrom?.touched)" class="text-danger">DepartFrom is required</small>
             <datalist id="DepartFrom">
                 <option *ngFor="let list of DepartFromList" value="{{list}}"></option>
             </datalist>
         </div>
         <div class="form-group">
             <label for="goingTo">ArrivalTo</label>
-            <input class="form-control" required list="goingTo" id="goingTo" #goingTo="ngModel"
-                [class.is-invalid]="goingTo.invalid && goingTo.touched" placeholder="goingTo"
-                [(ngModel)]="train.arrivalStation" name="goingTo">
+            <input class="form-control" required list="goingTo" id="goingTo" #goingTo="ngModel" placeholder="goingTo" [(ngModel)]="train.arrivalStation" name="goingTo">
+                <small *ngIf="goingTo.errors?.['required'] && (goingTo?.dirty || goingTo?.touched)" class="text-danger">goingTo is required</small>
             <datalist id="goingTo">
                 <option *ngFor="let list of DepartFromList" value="{{list}}"></option>
             </datalist>
         </div>
         <div class="form-group">
             <label for="DepartureDate">DepartureTime : </label>
-            <input id="DepartureDate" class="form-control" #DepartureDate="ngModel"
-            [class.is-invalid]="DepartureDate.invalid && DepartureDate.touched" type="time" [(ngModel)]="train.depatureTime" placeholder="depatureTime" required name="DepartureDate">
+            <input id="DepartureDate" class="form-control" #DepartureDate="ngModel" type="time" [(ngModel)]="train.depatureTime" placeholder="depatureTime" required name="DepartureDate">
+            <small *ngIf="DepartureDate.errors?.['required'] && (DepartureDate?.dirty || DepartureDate?.touched)" class="text-danger">DepartureDate is required</small>
         </div>
         <div class="form-group">
             <label for="arrivalTime">ArrivalTime : </label>
-            <input id="arrivalTime" class="form-control" #arrivalTime="ngModel"
-            [class.is-invalid]="arrivalTime.invalid && arrivalTime.touched" type="time" [(ngModel)]="train.arrivalTime" placeholder="arrivalTime" required name="arrivalTime">
+            <input id="arrivalTime" class="form-control" #arrivalTime="ngModel" type="time" [(ngModel)]="train.arrivalTime" placeholder="arrivalTime" required name="arrivalTime">
+            <small *ngIf="arrivalTime.errors?.['required'] && (arrivalTime?.dirty || arrivalTime?.touched)" class="text-danger">arrivalTime is required</small>
         </div>
         <div class="form-group">
             <label for="quota">Quota : </label>
-            <input id="quota" class="form-control" type="text" #quota="ngModel"
-            [class.is-invalid]="quota.invalid && quota.touched" [(ngModel)]="train.quota" placeholder="quota" required name="quota">
+            <input id="quota" class="form-control" type="text" #quota="ngModel" placeholder="quota" required name="quota" [(ngModel)]="train.quota">
+            <small *ngIf="quota.errors?.['required'] && (quota?.dirty || quota?.touched)" class="text-danger">quota is required</small>
         </div>
         <div><label for="rundays">RunDays</label></div>
         <div>
-            <select multiple size="6" [(ngModel)]="train.run_days" #rundays="ngModel"
-            [class.is-invalid]="rundays.invalid && rundays.touched" name="rundays">
+            <select multiple size="6" [(ngModel)]="train.run_days" #rundays="ngModel" name="rundays">
                 <option value="SUN">Sunday</option>
                 <option value="MON">Monday</option>
                 <option value="TUE">Tuesday</option>
@@ -55,11 +53,60 @@
                 <option value="FRI">Friday </option>
                 <option value="SAT">Saturday </option>
       </select>
+      <small *ngIf="rundays.errors?.['required'] && (rundays?.dirty || rundays?.touched)" class="text-danger">rundays is required</small>
         </div>
         <div>
-            <label for="classes">Classes</label>
-            
+            <form #sl="ngForm" (ngSubmit)="Sleeper(sl)">
+                <fieldset>
+                    <legend>SLEEPER(SL)</legend>
+                    <label for="totalSeats">TotalSeats</label>
+                    <input required #st1="ngModel" type="number" [(ngModel)]="seat1.totalSeats" name="totalSeats" >
+                    <label for="waitinglist">WaitingList</label>
+                    <input type="number" [(ngModel)]="seat1.waitingList" name="waitinglist">
+                    <label for="price">Price</label>
+                    <input type="number" [(ngModel)]="seat1.price" name="price">
+                    <label for="fare">Fare</label>
+                    <input type="number" [(ngModel)]="seat1.fare" name="fare">
+                    <button type="submit">Submit</button>
+                </fieldset>
+        
+            </form>
+        </div>
+        <div>
+            <form #sl="ngForm" (ngSubmit)="Ac3(sl)">
+                <fieldset>
+                    <legend>AC Tier 3 </legend>
+                    <label for="totalSeats">TotalSeats</label>
+                    <input required #st1="ngModel" type="number" [(ngModel)]="seat2.totalSeats" name="totalSeats" >
+                    <label for="waitinglist">WaitingList</label>
+                    <input type="number" [(ngModel)]="seat2.waitingList" name="waitinglist">
+                    <label for="price">Price</label>
+                    <input type="number" [(ngModel)]="seat2.price" name="price">
+                    <label for="fare">Fare</label>
+                    <input type="number" [(ngModel)]="seat2.fare" name="fare">
+                    <button type="submit">Submit</button>
+                </fieldset>
+        
+            </form>
+        </div>
+        <div>
+            <form #sl="ngForm" (ngSubmit)="Ac2(sl)">
+                <fieldset>
+                    <legend>AC Tier 2 </legend>
+                    <label for="totalSeats">TotalSeats</label>
+                    <input required #st1="ngModel" type="number" [(ngModel)]="seat3.totalSeats" name="totalSeats" >
+                    <label for="waitinglist">WaitingList</label>
+                    <input type="number" [(ngModel)]="seat3.waitingList" name="waitinglist">
+                    <label for="price">Price</label>
+                    <input type="number" [(ngModel)]="seat3.price" name="price">
+                    <label for="fare">Fare</label>
+                    <input type="number" [(ngModel)]="seat3.fare" name="fare">
+                    <button type="submit">Submit</button>
+                </fieldset>
+        
+            </form>
         </div>
         <div><button type="submit">Submit</button></div>
     </div>
 </form>
+
