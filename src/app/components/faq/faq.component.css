@@ -7,9 +7,7 @@
 }
 .faq{
     background-color: white;
-    position: relative;
     width: 80%;
-    top: 300px;
 }
 .faq .display{
     display: flex;

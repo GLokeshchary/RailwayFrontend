@@ -30,6 +30,8 @@ import { BookSsComponent } from './components/book-ss/book-ss.component';
 import {MatRadioModule} from '@angular/material/radio';
 import { UpdatepassengerComponent } from './components/updatepassenger/updatepassenger.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { SearchComponent } from './components/search/search.component';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,7 @@ import { PaymentComponent } from './components/payment/payment.component';
     BookSsComponent,
     UpdatepassengerComponent,
     PaymentComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +72,7 @@ import { PaymentComponent } from './components/payment/payment.component';
     MatRadioModule
 
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

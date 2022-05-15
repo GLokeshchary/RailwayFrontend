@@ -28,7 +28,7 @@ export class AppComponent {
   }
   logout(): void {
     this.tokenStorageService.signOut();
-    this.router.navigate(["/home"])
+    this.router.navigate(["/home"]);
     window.location.reload();
   }
 }

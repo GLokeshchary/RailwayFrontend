@@ -1,0 +1,99 @@
+<form class="form-inline">
+    <div class="head">
+        <div class="headfirst">
+            <label for="Start">Depature:</label>
+            <input type="search" id="Start" placeholder="DepatureStation" name="depatureStation">
+        </div>
+        <div class="headfirst exchange">
+            <button type="button" class="btn btn-success" style=" border-radius: 50%;"><i class="fa fa-exchange"
+                    aria-hidden="true"></i></button>
+        </div>
+        <div class="headfirst">
+            <label for="End">Arrival:</label>
+            <input type="search" id="End" placeholder="arrivalStation" name="arrivalStation">
+        </div>
+        <div class="headfirst">
+            <label for="Date">DepatreDate:</label>
+            <input type="date" id="Date" placeholder="Date" name="date">
+        </div>
+        <div class="headfirst">
+            <button type="submit" class="btn btn-warning" style="font-weight: bold;">Modify <span><i class="fa fa-search" aria-hidden="true"></i></span></button>
+        </div>
+    </div>
+</form>
+
+<div class="firstbox">
+    <div class="row1">
+        <div>
+            <div class="review">
+                <h4>Review</h4>
+            </div>
+            <div class="box">
+                <div class="box-1">
+                    <h6>Origin(s)</h6>
+                </div>
+                <div class="box-1">
+                    Destination
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="first">
+
+        <div class="table-Header">
+            <div class="headerrow">Train</div>
+            <div class="headerrow">Depature</div>
+            <div class="headerrow">Duration</div>
+            <div class="headerrow">Arrival</div>
+        </div>
+
+        <div class="displayBox" *ngFor="let train of trains">
+            <div class="traindetails">
+                <div class="row12">{{train.trainNo}}</div>
+                <div class="row12">{{train.trainName}}</div>
+                <div class="row12">
+                    <div>{{train.depatureTime}}</div>
+                    <div>{{train.depatureStation}}</div>
+                </div>
+                <div class="row12">
+                    <div>Duration</div>
+                    <div>{{train.run_days}}</div>
+                </div>
+                <div class="row12">
+                    <div>{{train.arrivalTime}}</div>
+                    <div>{{train.arrivalStation}}</div>
+                </div>
+            </div>
+            <div>
+                Choose Quota: {{train.quota}}
+            </div>
+            <div class="classdetails">
+                <div class="coach">
+                    <div class="heading">SLEEPER</div>
+                    <div class="seatdetails"></div>
+                    <div class="booknow"><button (click)="bookTrain(train.trainNo!,train.classes!)" class="btn btn-primary">Book Now</button></div>
+                </div>
+                <div class="coach">
+                    <div class="heading">AC TiER 1</div>
+                    <div class="seatdetails"></div>
+                    <div class="booknow"><button (click)="bookTrain2(train.trainNo!,train.classes!)" class="btn btn-primary">Book Now</button></div>
+                </div>
+                <div class="coach">
+                    <div class="heading">AC TIER 2</div>
+                    <div class="seatdetails"></div>
+                    <div class="booknow"><button (click)="bookTrain3(train.trainNo!,train.classes!)" class="btn btn-primary">Book Now</button></div>
+                </div>
+                <div class="coach">
+                    <div class="heading">AC TIER 3</div>
+                    <div class="seatdetails"></div>
+                    <div class="booknow"><button (click)="bookTrain4(train.trainNo!,train.classes!)" class="btn btn-primary">Book Now</button></div>
+                </div>
+                <div class="coach">
+                    <div class="heading">SECOND SITTING</div>
+                    <div class="seatdetails"></div>
+                    <div class="booknow"><button  (click)="bookTrain1(train.trainNo!,train.classes!)" class="btn btn-primary">Book Now</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

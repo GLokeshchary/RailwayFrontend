@@ -2,14 +2,15 @@ import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { BookTicket } from 'src/app/models/book-ticket';
 import { BookedTicket } from 'src/app/models/booked-ticket';
 import { Passenger } from 'src/app/models/passenger';
-import { Seat } from 'src/app/models/seat';
-import { Ticket } from 'src/app/models/ticket';
+
 import { Train } from 'src/app/models/train';
 import { Values } from 'src/app/models/values';
 import { BookService } from 'src/app/services/book.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { TrainService } from 'src/app/services/train.service';
 import Swal from 'sweetalert2';
 
@@ -46,7 +47,7 @@ export class BookSLComponent implements OnInit {
 
   random:string|undefined;
 
-  constructor(private bookservice:BookService,private route:ActivatedRoute,private router:Router,private trainservice:TrainService) { }
+  constructor(private bookservice:BookService,private route:ActivatedRoute,private router:Router,private trainservice:TrainService,private tokenstorage:TokenStorageService) { }
 
   ngOnInit(): void {
     
@@ -55,6 +56,7 @@ export class BookSLComponent implements OnInit {
     this.bookTicket.bookId="14523";
     this.bookTicket.userId="158233";
     this.trainservice.getValues(this.trainNo!,this.coach).subscribe(data=>this.values=data);
+    this.bookedTicket.email=this.tokenstorage.getUser().email;
     
   }
     
@@ -68,10 +70,7 @@ export class BookSLComponent implements OnInit {
     return false;
   }
   }
-  getValues(){
-    
-    
-  }
+
 
   getRandonString(){
     return Math.floor(100000+Math.random()*900000).toString();
@@ -106,13 +105,13 @@ export class BookSLComponent implements OnInit {
     this.isSubmitted=true;
     this.isOpened=!this.isOpened;
   }
-  onedit(f:NgForm){
-
-  }
+  
 
   BookNow(trainNo:string){
-    
-    this.bookservice.bookTicketByTrainNo2(this.bookTicket!,trainNo,this.coach).subscribe(data=>console.log(data));
+    //this.bookservice.bookTicketByTrainNo2(this.bookTicket!,trainNo,this.coach).subscribe(data=>console.log(data));
+    this.bookedTicket.status="waiting to confirm";
+    this.bookservice.bookTicketByTrainNo(this.bookedTicket,trainNo,this.coach).subscribe(data=>console.log(data),error=>alert(error)
+    )
     
   }
   updatePassenger(id:string){

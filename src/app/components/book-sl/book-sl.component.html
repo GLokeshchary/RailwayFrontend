@@ -1,16 +1,4 @@
-<nav class="navbar navbar-expand-lg navclass">
-    <div class="container-fluid">
-        <a class="navbar-brand  header" routerLink="home">
-            <img src="assets/images/trainlogo.jpg" alt="" width="30" height="24" class="d-inline-block align-text-top">
-            ONLINE RAILWAY RESERVATION SYSTEM
-        </a>
-    </div>
-    <div class="navbar-nav">
-        <a class="nav-link active " aria-current="page" href="#">Home</a>
-        <a class="nav-link" routerLink="contact">ContactUs</a>
-        <a class="nav-link" routerLink="about">About</a>
-    </div>
-</nav>
+
 <div class="boxes2">
     <div class="traindetails">
         <div class="train">
@@ -57,66 +45,12 @@
             </div>
         </div>
         <div class="pay">
-            <button type="button" class="btn btn-primary btn-lg btn-block">Pay Now</button>
+            <button type="button" (click)="BookNow(train.trainNo!)" class="btn btn-primary btn-lg btn-block">Pay Now</button>
         </div>
     </div>
 </div>
 <button (click)="onClick()" [disabled]="disable()" class="btn btn-primary pass"> + Add passengers</button>
 <div class="down" *ngIf="isDisabled">Passengers Limit Exceeded:One can book only 7 Passengers Tickets</div>
-<div class="edit" *ngIf="openupdate">
-    <div class="down">
-        <form #f="ngForm" (ngSubmit)="onedit(f)" novalidate>
-            <div class="row align-items-center g-3">
-                <div class="col-auto">
-                    <label for="PassengerName">PassengerName</label>
-                    <input required #passengername="ngModel" type="text" class="form-control" placeholder="PassengerName" id="PassengerName"
-                        [(ngModel)]="passenger2.passenger_name" name="passenger_name">
-                        <small *ngIf="passengername.errors?.['required'] && (passengername?.dirty || passengername?.touched) " class="text-danger">Name is Required</small>
-                </div>
-                <div class="col-auto">
-                    <label for="Age">Age</label>
-                    <input required #age="ngModel" type="text" class="form-control" placeholder="Age" id="Age" [(ngModel)]="passenger2.age"
-                        name="age">
-                        <small *ngIf="age.errors?.['required'] && (age?.dirty || age?.touched) " class="text-danger">Age is Required</small>
-                </div>
-                <div class="col-auto">
-                    <label for="contactNumber">ContactNumber</label>
-                    <input minlength="10"  required #contact="ngModel" type="text" pattern="[- +()0-9]+" class="form-control" placeholder="contactNumber" id="contactNumber"
-                        [(ngModel)]="passenger2.contactNumber" name="contactNumber">
-                        <small *ngIf="contact.errors?.['required'] && (contact?.dirty || contact?.touched) " class="text-danger">ContactNumber is Required</small>
-                        <small *ngIf="contact.errors?.['pattern']" class="text-danger">Invalid Contact Number</small>
-                        <small *ngIf="contact.errors?.['minlength']" class="text-danger">Contact number should be 10 length</small>
-                </div>
-                <div class="col-auto gender">
-                    <label for="gender">Gender:</label>
-                    <input #gender="ngModel" value="male" type="radio" class="form-control" placeholder="gender" id="gender" [(ngModel)]="passenger2.gender"
-                        name="gender">Male
-                     <input #gender="ngModel" value="female" type="radio" class="form-control" placeholder="gender" id="gender" [(ngModel)]="passenger2.gender"
-                        name="gender">Female
-                    <input #gender="ngModel" value="others" type="radio" class="form-control" placeholder="gender" id="gender" [(ngModel)]="passenger2.gender"
-                        name="gender">Others
-                        <small *ngIf="gender.errors?.['required'] && (gender?.dirty || gender?.touched)" class="text-danger">Gender is required</small>
-                </div>
-                <div class="col-auto">
-                    <label for="email">Email</label>
-                    <input type="text" email required #email="ngModel" class="form-control" placeholder="Email" id="email" [(ngModel)]="passenger2.email"
-                        name="email">
-                        <small *ngIf="email.errors?.['required'] && (email?.dirty || email?.touched)" class="text-danger">Email is required</small>
-                        <small *ngIf="email.errors?.['email']"  class="text-danger">Invalid email</small>
-                </div>
-                <div class="col-auto">
-                    <label for="seat_no">SeatNo</label>
-                    <input required #seat="ngModel" type="number" class="form-control" placeholder="SeatNo" id="seat_no"
-                        [(ngModel)]="passenger2.seat_no" name="seat_no">
-                        <small *ngIf="seat.errors?.['required'] && (seat?.dirty || seat?.touched) "></small>
-                </div>
-            </div>
-            <div class="col-auto">
-                <button  class="btn btn-warning down1" [disabled]="!f.valid" type="submit">Edit</button>
-            </div>
-        </form>
-    </div>
-</div>
 <div class="down" *ngIf="isOpened">
     <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
         <div class="row align-items-center g-3">

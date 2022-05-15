@@ -15,7 +15,7 @@ export class BookedTicket {
         public status:string|undefined;
         public transactional_id:number|undefined;
         public account_no:number|undefined;
-        public email_address:string|undefined;
+        public email:string|undefined;
         public booking_time:Date|undefined;
         public amount:number|undefined;
 

@@ -48,6 +48,7 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit(userForm: any){
+    
     this.isSubmitted=true;
     console.log(userForm.value);
     console.log(userForm.value.DepartFrom);
@@ -58,6 +59,7 @@ export class HomeComponent implements OnInit {
     this.goingTo=userForm.value.goingTo;
     this.Date=userForm.value.Date;
     console.log(this.DepartFrom);
+    this.route.navigate(['/search',this.DepartFrom,this.goingTo])
     
 
     this.trainservice.getTrainsBetweenStations(this.DepartFrom,this.goingTo).subscribe(data=>this.trains=data);
@@ -78,23 +80,5 @@ export class HomeComponent implements OnInit {
     this.route.navigate(['/register']);
   }
 
-  bookTrain(trainNo:string,classes:Map<String,Seat>){
-    Swal.fire({
-      title: 'Do you want to open the bookPage?',
-      showDenyButton: true,
-      showCancelButton: true,
-      confirmButtonText: 'open',
-      denyButtonText: `Don't open`,
-    }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
-      if (result.isConfirmed) {
-        this.route.navigate(['/bookSL',trainNo]);
-        Swal.fire('opened!', '', 'success')
-      } else if (result.isDenied) {
-        Swal.fire('Changes are not saved', '', 'info')
-      }
-    })
-    
-  }
 
 }
