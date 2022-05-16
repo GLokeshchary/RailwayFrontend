@@ -18,8 +18,8 @@ export class BookService {
     return this.http.post<BookTicket>(`${baseurl}`,bookticket);
 
   }
-  bookTicketByTrainNo(bookticket:BookedTicket,trainNo:string,coach:string):Observable<BookedTicket>{
-    const baseurl =`http://localhost:3333/customer/bookTicketByTrainNo/${trainNo}/${coach}`;
+  bookTicketByTrainNo(bookticket:BookedTicket,trainNo:string,coach:string,email:string):Observable<BookedTicket>{
+    const baseurl =`http://localhost:3333/customer/bookTicketByTrainNo/${trainNo}/${coach}/${email}`;
     return this.http.post<BookedTicket>(`${baseurl}`,bookticket);
 
   }
@@ -42,5 +42,17 @@ export class BookService {
   deleteAllPassengers(){
     const url=`http://localhost:3333/customer/deleteAllPassengerList`;
     return this.http.delete(`${url}`);
+  }
+  checkPnr(pnr:number):Observable<boolean>{
+    const url=`http://localhost:3333/customer/checkPnrExistsOrNot/${pnr}`;
+    return this.http.get<boolean>(`${url}`);
+  }
+  getBookedTicketByPnr(pnr:number):Observable<BookedTicket>{
+    const url=`http://localhost:3333/customer/getbookedTicketByPNR/${pnr}`;
+    return this.http.get<BookedTicket>(`${url}`);
+  }
+  deletePassengerById(passengerid:string):Observable<string>{
+    const url=`http://localhost:3333/customer/deletePassengerById/${passengerid}`;
+    return this.http.delete<string>(`${url}`);
   }
 }

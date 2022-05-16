@@ -1,0 +1,33 @@
+<div class="example">
+    <img class="background-image" src="assets/images/trainbackground.jpg">
+    <div class="overlay">Check Tickets </div>
+    <div class="form1">
+        <form #f="ngForm" novalidate (ngSubmit)="onSubmit()">
+            <div class="display">
+                <div>
+                    <label for="pnr">Enter PNR Number :</label>
+                    <input type="number" required #t="ngModel" minlength="6" name="pnr" id="pnr" [(ngModel)]="userpnr">
+                    <small class="text-danger" *ngIf="t.errors?.['required'] && ( t.dirty || t.touched)">PNR is required</small>
+                    
+                        <button [disabled]="!f.valid" type="submit" class="btn btn-warning">Check</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div  class="details">
+        <div class="head" style="font-weight: bold;" >Booked Details</div>
+        <div>
+            <div>PNR no : {{bookedTicket.pnr}}</div>
+            <div>TrainNo : {{bookedTicket.train_no}}</div>
+            <div>TrainName : {{bookedTicket.train_name}}</div>
+            <div>DepatureStation : {{bookedTicket.start}}</div>
+            <div>ArrivalStation : {{bookedTicket.destination}}</div>
+            <div>Start Time : {{bookedTicket.departure_time}}</div>
+            <div>End Time : {{bookedTicket.arrival_time}}</div>
+            <div>Email : {{bookedTicket.email}}</div>
+            <div>CoachName : {{bookedTicket.class_name}}</div>
+            <div>BookedTime : {{bookedTicket.booking_time}}</div>
+            <div>Totalamount : {{bookedTicket.amount}}</div>
+        </div>
+    </div>
+</div>

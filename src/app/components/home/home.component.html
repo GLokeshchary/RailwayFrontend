@@ -9,35 +9,35 @@
 
 <div class="container1">
     <div class="Home-Heading">
-        <h3>
+        <h2>
             <i class="fa fa-train" aria-hidden="true"></i>
             Book Train Ticket
-        </h3>
+        </h2>
     </div>
 </div>
 <div class="card">
     <form #userForm="ngForm" novalidate (ngSubmit)="onSubmit(userForm)">
-        <div class="form-in-custom form-group">
+        <div class="form-group">
             <label for="DepartFrom">Depart From</label>
-            <input required list="DepartFroms" id="DepartFrom" #DepartFrom="ngModel" name="DepartFrom" [(ngModel)]="demo1" />
+            <input required list="DepartFroms" id="DepartFrom" placeholder="From" #DepartFrom="ngModel" name="DepartFrom" [(ngModel)]="demo1" />
             <datalist id="DepartFroms">
                 <option *ngFor="let list of DepartFromList" value="{{list}}"></option>
             </datalist>
-            <small *ngIf="DepartFrom.errors?.['required'] && (DepartFrom.dirty || DepartFrom.touched)" class="text-danger">DepartFrom is required</small>
+            <div><small *ngIf="DepartFrom.errors?.['required'] && (DepartFrom.dirty || DepartFrom.touched)" class="text-danger">DepartFrom is required</small></div>
         </div>
-        <div class="exchange-icon"><a (click)="onSwap(demo1,demo2)" ><i class="fas fa-exchange-alt"></i></a></div>
+        <div class="exchange-icon"><button style="border-radius: 50%;" type="button" (click)="onSwap(demo1,demo2)"><i class="fas fa-exchange-alt"></i></button></div>
         <div class="form-in-custom form-in-custom2">
             <label for="goingTo">GoingTo</label>
-            <input required list="goingTos" id="goingTo" #goingTo="ngModel" name="goingTo" [(ngModel)]="demo2" />
+            <input required list="goingTos" id="goingTo" placeholder="To" #goingTo="ngModel" name="goingTo" [(ngModel)]="demo2" />
             <datalist id="goingTos">
                 <option *ngFor="let list of DepartFromList" value="{{list}}">{{list}}</option>
             </datalist>
-            <small *ngIf="goingTo.errors?.['required'] && ( goingTo.dirty || goingTo.touched)" class="text-danger">goingTo is required</small>
+            <div><small *ngIf="goingTo.errors?.['required'] && ( goingTo.dirty || goingTo.touched)" class="text-danger">goingTo is required</small></div>
         </div>
         <div class="form-in-custom4">
             <label for="Date">Departure Date</label>
             <input required type="date" [min]="now" name="Date" #date1="ngModel" [(ngModel)]="date" placeholder="Date" id="Date">
-            <small class="text-danger" *ngIf="date1.errors?.['required'] && (date1.dirty || date1.touched)">Date is required</small>
+            <div><small class="text-danger" *ngIf="date1.errors?.['required'] && (date1.dirty || date1.touched)">Date is required</small></div>
         </div>
         <div class="form-in-custom3">
             <label for=""></label>
@@ -65,10 +65,10 @@
         </div>
     </div>
 </div>
-<!--<div>
+<div class="faq">
     <app-faq></app-faq>
 </div>
 <div class="footer">
     <app-footer></app-footer>
-</div>-->
+</div>
 

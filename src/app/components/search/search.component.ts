@@ -1,4 +1,6 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Seat } from 'src/app/models/seat';
 import { Train } from 'src/app/models/train';
@@ -15,18 +17,25 @@ import Swal from 'sweetalert2';
 export class SearchComponent implements OnInit {
 
   trains:Train[]|undefined;
-    departFrom:string|undefined;
+    DepartFrom:string|undefined;
     goingTo:string|undefined;
     seatsl:Seat=new Seat();
     isLoggedIn:boolean|undefined;
+    now:any;
+   
 
   constructor(private route:ActivatedRoute,private trainservice:TrainService,private router:Router,private userService:UserService,private tokenstorage:TokenStorageService) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((params)=>{this.departFrom=params.get('start')!;});
+    const datePipe = new DatePipe('en-Us');
+    this.now = datePipe.transform(new Date(), 'yyyy-MM-dd');
+    this.route.paramMap.subscribe((params)=>{this.DepartFrom=params.get('start')!;});
     this.route.paramMap.subscribe((params)=>{this.goingTo=params.get('end')!;});
-    this.trainservice.getTrainsBetweenStations(this.departFrom,this.goingTo).subscribe(data=>this.trains=data);
+    this.trainservice.getTrainsBetweenStations(this.DepartFrom,this.goingTo).subscribe(data=>this.trains=data);
 
+
+  }
+  onSubmit(userForm:NgForm){
 
   }
 

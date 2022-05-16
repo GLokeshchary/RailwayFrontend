@@ -1,6 +1,6 @@
 
  <div class="nav">
-  <div class="links1"><img class="trainlogo" src="./images/besttrainlogo.jfif" alt=""></div>
+  <div class="links1"><img class="trainlogo" src="assets/images/besttrainlogo.jfif" alt=""></div>
   <div class="links"><div class="center">GoTrains</div></div>
   <div class="links3">
       <ul class="display">
@@ -9,17 +9,18 @@
           </li>
           <li><a routerLink="/contact"><i class="fa fa-phone-square" aria-hidden="true"></i>ContactUs</a></li>
           <li><a routerLink="/about"><i class="fa fa-train" aria-hidden="true"></i>About</a></li>
-          <li><a href=""><i class="fa fa-book" aria-hidden="true"></i>Check Tickets</a></li>
-          <li><a href=""><i class="fa fa-users" aria-hidden="true"></i>Cancel Tickets</a></li>
+          <li *ngIf="isLoggedIn"><a routerLink="/checkTickets"><i class="fa fa-book" aria-hidden="true"></i>Check Tickets</a></li>
+          <li *ngIf="isLoggedIn"><a href=""><i class="fa fa-users" aria-hidden="true"></i>Cancel Tickets</a></li>
+          <li *ngIf="showAdminBoard"><a routerLink="/admindashboard"><i class="fa fa-lock" aria-hidden="true"></i>Admin</a></li>
       </ul>
   </div>
   <div class="links4">
       <ul class="display">
 
-          <li><a routerLink="/login"><i class="fa fa-sign-in" aria-hidden="true"></i>Login</a></li>
-          <li><a routerLink="/register"><i class="fa fa-user-plus" aria-hidden="true"></i>SignUp</a></li>
-          <li><a routerLink="/profile"><i class="fa fa-user-circle" aria-hidden="true"></i>Profile</a></li>
-          <li><a (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i>LogOut</a></li>
+          <li *ngIf="!isLoggedIn"><a routerLink="/login"><i class="fa fa-sign-in" aria-hidden="true"></i>Login</a></li>
+          <li *ngIf="!isLoggedIn"><a routerLink="/register"><i class="fa fa-user-plus" aria-hidden="true"></i>SignUp</a></li>
+          <li *ngIf="isLoggedIn" ><a routerLink="/profile"><i class="fa fa-user-circle" aria-hidden="true"></i>{{username}}</a></li>
+          <li *ngIf="isLoggedIn"><a (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i>LogOut</a></li>
       </ul>
   </div>
 </div>

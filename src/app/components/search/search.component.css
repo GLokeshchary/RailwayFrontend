@@ -1,41 +1,6 @@
-.form-inline {
-    margin-left: 10%;
-    width: 70%;
-    height: 100px;
-    border: 2px solid rgb(60, 60, 244);
-    border-radius: 1rem;
-}
 
-.form-inline .head {
-    display: flex;
-    position: relative;
-    top: 20px;
-    left: 35px;
-}
 
-.head .headfirst {
 
-    padding: 10px;
-
-}
-
-.form-inline:hover {
-    background-color: rgb(57, 220, 235);
-}
-
-label {
-    font-size: 15px;
-    font-weight: bold;
-}
-
-input {
-    border: solid lightskyblue;
-    border-radius: 1rem;
-}
-
-.headfirst .exchange {
-    border-radius: 50%;
-}
 
 .firstbox {
     display: flex;
@@ -61,6 +26,7 @@ input {
 }
 
 .box-1 {
+    
     padding: 10px;
 }
 

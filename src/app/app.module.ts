@@ -32,6 +32,9 @@ import { UpdatepassengerComponent } from './components/updatepassenger/updatepas
 import { PaymentComponent } from './components/payment/payment.component';
 import { SearchComponent } from './components/search/search.component';
 import { AuthGuard } from './auth.guard';
+import { CheckticketsComponent } from './components/checktickets/checktickets.component';
+import { UpdatetrainComponent } from './components/updatetrain/updatetrain.component';
+import { CancelComponent } from './components/cancel/cancel.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +62,9 @@ import { AuthGuard } from './auth.guard';
     UpdatepassengerComponent,
     PaymentComponent,
     SearchComponent,
+    CheckticketsComponent,
+    UpdatetrainComponent,
+    CancelComponent,
   ],
   imports: [
     BrowserModule,

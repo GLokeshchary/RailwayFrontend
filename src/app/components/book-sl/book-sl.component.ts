@@ -33,6 +33,7 @@ export class BookSLComponent implements OnInit {
   trainNo:string|undefined;
   coach="SLEEPER(SL)";
   passengerList:Passenger[]=[];
+  passengerList2:Passenger[]=[];
   price:number|any;
   size:number=0;
   ticketFare:number|undefined;
@@ -57,6 +58,9 @@ export class BookSLComponent implements OnInit {
     this.bookTicket.userId="158233";
     this.trainservice.getValues(this.trainNo!,this.coach).subscribe(data=>this.values=data);
     this.bookedTicket.email=this.tokenstorage.getUser().email;
+    this.bookservice.getAllPassengers().subscribe(data=>{
+      this.size=data.length 
+      this.passengerList=data;});
     
   }
     
@@ -80,12 +84,10 @@ export class BookSLComponent implements OnInit {
     
     console.log(this.totalamount);
     
-     this.bookservice.savePassengers(f.value).subscribe(data=>console.log(data));
-     this.passengerList.push(f.value);
-     this.size=this.passengerList.length;
-     /*this.bookservice.getAllPassengers().subscribe(data=>{
-      this.size=data.length 
-      this.passengerList=data;});*/
+     this.bookservice.savePassengers(this.passenger).subscribe(data=>console.log(data));
+     this.passengerList2.push(this.passenger);
+     this.size=this.passengerList2.length;
+     
 
     console.log(this.values.price);
     this.price=this.values.price;
@@ -107,15 +109,14 @@ export class BookSLComponent implements OnInit {
   }
   
 
-  BookNow(trainNo:string){
+  PayNow(trainNo:string,coach:string,t:number){
+    this.router.navigate(['/payment',trainNo,this.coach,t]);
     //this.bookservice.bookTicketByTrainNo2(this.bookTicket!,trainNo,this.coach).subscribe(data=>console.log(data));
-    this.bookedTicket.status="waiting to confirm";
-    this.bookservice.bookTicketByTrainNo(this.bookedTicket,trainNo,this.coach).subscribe(data=>console.log(data),error=>alert(error)
-    )
-    
+  }
+  delete(passengerId:string){
+    this.bookservice.deletePassengerById(passengerId).subscribe(data=>console.log(data),err=>console.log(err));
   }
   updatePassenger(id:string){
-    this.openupdate=true;
-    this.bookservice.getPassengerById(id).subscribe(data=>this.passenger2=data);
+    this.router.navigate(['/updatePassenger',id]);
   }
 }

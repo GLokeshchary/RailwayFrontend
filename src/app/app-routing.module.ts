@@ -11,6 +11,7 @@ import { BookAc3Component } from './components/book-ac3/book-ac3.component';
 import { BookSLComponent } from './components/book-sl/book-sl.component';
 import { BookSsComponent } from './components/book-ss/book-ss.component';
 import { BookedTicketsComponent } from './components/booked-tickets/booked-tickets.component';
+import { CheckticketsComponent } from './components/checktickets/checktickets.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { FaqComponent } from './components/faq/faq.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -24,15 +25,16 @@ import { RegisterComponent } from './components/register/register.component';
 import { SearchComponent } from './components/search/search.component';
 import { TrainListComponent } from './components/train-list/train-list.component';
 import { UpdatepassengerComponent } from './components/updatepassenger/updatepassenger.component';
+import { UpdatetrainComponent } from './components/updatetrain/updatetrain.component';
 
 const routes: Routes = [
   {path:"search/:start/:end",component:SearchComponent},
   {path:"register",component:RegisterComponent},
-  {path:"bookSL/:trainNo",component:BookSLComponent,children:[{path:"updatePassenger/:id",component:UpdatepassengerComponent}]},
-  {path:"bookAC1/:trainNo",component:BookAc1Component,children:[{path:"updatePassenger/:id",component:UpdatepassengerComponent}]},
-  {path:"bookAC2/:trainNo",component:BookAc2Component,children:[{path:"updatePassenger/:id",component:UpdatepassengerComponent}]},
-  {path:"bookAC3/:trainNo",component:BookAc3Component,children:[{path:"updatePassenger/:id",component:UpdatepassengerComponent}]},
-  {path:"bookSS/:trainNo",component:BookSsComponent,children:[{path:"updatePassenger/:id",component:UpdatepassengerComponent}]},
+  {path:"bookSL/:trainNo",component:BookSLComponent},
+  {path:"bookAC1/:trainNo",component:BookAc1Component},
+  {path:"bookAC2/:trainNo",component:BookAc2Component},
+  {path:"bookAC3/:trainNo",component:BookAc3Component},
+  {path:"bookSS/:trainNo",component:BookSsComponent},
   {path:"home",component:HomeComponent},
   {path:"contact",component:ContactComponent},
   {path:"bookedTickets",component:BookedTicketsComponent},
@@ -43,8 +45,11 @@ const routes: Routes = [
   {path:"admindashboard",component:AdminDashboardComponent,children:[{path:"createtrain",component:AddTrainComponent},
                                                                      {path:"Trainlist",component:TrainListComponent}]},
   {path:"faq",component:FaqComponent},
+  {path:"updatePassenger/:id",component:UpdatepassengerComponent},
+  {path:"updateTrain/:trainNo",component:UpdatetrainComponent},
+  {path:"checkTickets",component:CheckticketsComponent},
   {path:"footer",component:FooterComponent},
-  {path:"payment",component:PaymentComponent},
+  {path:"payment/:trainNo/:coach/:totalamount",component:PaymentComponent},
   {path:"navbar",component:NavbarComponent},
   
   {path:'',redirectTo:"home",pathMatch:"full"}

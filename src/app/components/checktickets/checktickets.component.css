@@ -1,0 +1,42 @@
+.example img {
+    width: 100%;
+    position: absolute;
+  }
+  
+  .example .overlay {
+    color: white;
+    font-weight: 900;
+    font-size: 80px;
+    position: absolute;
+    top: 200px;
+    left: 480px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  .form1{
+      position: absolute;
+      top:300px;
+      left: 350px;
+      color: white;
+  }
+  .form1 .display{
+      display: flex;
+      padding:20px;
+      font-size: 30px;
+      font-weight: bold;
+  }
+  .details{
+      width: 40%;
+      position: absolute;
+      background-color: white;
+      top: 450px;
+      left: 450px;
+  }
+  .details .head{
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+  }
+  .details div{
+      padding: 5px;
+      border-bottom: 2px solid black;
+  }

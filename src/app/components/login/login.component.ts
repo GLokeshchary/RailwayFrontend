@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Login } from 'src/app/models/login';
 import { AuthService } from 'src/app/services/auth.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +20,8 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
+  user:string|undefined;
+  status:number|undefined;
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService,private router:Router) { }
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
@@ -36,14 +39,29 @@ export class LoginComponent implements OnInit {
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
         this.reloadPage();
+        this.status=data.status;
       },
       err => {
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
       }
     );
+    this.router.navigate(['/home']); 
+      Swal.fire(
+        'Welcome Back!',
+        'Logged SuccessFully',
+        'success'
+      )
+      if(this.status==401){
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Invalid Credentials!'
+      });
+      this.router.navigate(['/login']);
+    }
     
-      this.router.navigate(['/home']);
+     
   }
   reloadPage(): void {
     window.location.reload();

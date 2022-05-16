@@ -45,7 +45,7 @@
             </div>
         </div>
         <div class="pay">
-            <button type="button" (click)="BookNow(train.trainNo!)" class="btn btn-primary btn-lg btn-block">Pay Now</button>
+            <button type="button" (click)="PayNow(train.trainNo!,coach,totalamount!)" class="btn btn-primary btn-lg btn-block">Pay Now</button>
         </div>
     </div>
 </div>
@@ -121,15 +121,15 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let passenger of passengerList">
+            <tr *ngFor="let passenger of passengerList2">
                 <td>{{passenger.passenger_name}}</td>
                 <td>{{passenger.age}}</td>
                 <td>{{passenger.contactNumber}}</td>
                 <td>{{passenger.gender}}</td>
                 <td>{{passenger.email}}</td>
                 <td>{{passenger.seat_no}}</td>
-                <td><button mat-fab color="accent" (click)="updatePassenger(passenger.passengerId!)"><mat-icon>edit</mat-icon></button>
-                <button mat-fab color="primary"><mat-icon>delete</mat-icon></button></td>
+                <td>
+                <button mat-fab color="primary" (click)="delete(passenger.passengerId!)"><mat-icon>delete</mat-icon></button></td>
             </tr>
         </tbody>
     </table>

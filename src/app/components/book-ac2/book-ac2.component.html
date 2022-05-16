@@ -1,1 +1,136 @@
-<p>book-ac2 works!</p>
+
+<div class="boxes2">
+    <div class="traindetails">
+        <div class="train">
+            <div class="row12">{{train.trainNo}}</div>
+            <div class="row12">{{train.trainName}}</div>
+            <div class="row12">
+                <div>{{train.depatureTime}}</div>
+                <div>{{train.depatureStation}}</div>
+            </div>
+            <div class="row12">
+                <div><img src="assets/images/clock.png" alt="clock.png"></div>
+                <div>Duration</div>
+            </div>
+            <div class="row12">
+                <div>{{train.arrivalTime}}</div>
+                <div>{{train.arrivalStation}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="ticketfare">
+        <div style="font-weight: bold;text-align: center;">Fare BreakUp</div>
+        <div>
+            <div class="breakup">
+                <div class="left">TicketFare</div>
+                <div class="right">{{size}} x Passengers = {{ticketFare}} </div>
+            </div>
+            <div class="breakup">
+                <div class="left">ConvenienceFee**</div>
+                <div class="right">{{ConvenienceFee}}</div>
+            </div>
+            <div class="breakup">
+                <div class="left">AgentServiceCharges**</div>
+                <div class="right">{{AgentServiceCharges}}</div>
+            </div>
+            <div class="breakup">
+                <div class="left">Grand Total</div>
+                <div class="right">{{totalamount}}</div>
+            </div>
+            <div class="breakup">
+                <div class="left">*Incl. of GST</div>
+            </div>
+            <div class="breakup">
+                <div class="left">** 1.8%of GST</div>
+            </div>
+        </div>
+        <div class="pay">
+            <button type="button" (click)="PayNow(train.trainNo!,coach,totalamount!)" class="btn btn-primary btn-lg btn-block">Pay Now</button>
+        </div>
+    </div>
+</div>
+<button (click)="onClick()" [disabled]="disable()" class="btn btn-primary pass"> + Add passengers</button>
+<div class="down" *ngIf="isDisabled">Passengers Limit Exceeded:One can book only 7 Passengers Tickets</div>
+<div class="down" *ngIf="isOpened">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+        <div class="row align-items-center g-3">
+            <div class="col-auto">
+                <label for="PassengerName">PassengerName</label>
+                <input required #passengername="ngModel" type="text" class="form-control" placeholder="PassengerName" id="PassengerName"
+                    [(ngModel)]="passenger.passenger_name" name="passenger_name">
+                    <small *ngIf="passengername.errors?.['required'] && (passengername?.dirty || passengername?.touched) " class="text-danger">Name is Required</small>
+            </div>
+            <div class="col-auto">
+                <label for="Age">Age</label>
+                <input required #age="ngModel" type="text" class="form-control" placeholder="Age" id="Age" [(ngModel)]="passenger.age"
+                    name="age">
+                    <small *ngIf="age.errors?.['required'] && (age?.dirty || age?.touched) " class="text-danger">Age is Required</small>
+            </div>
+            <div class="col-auto">
+                <label for="contactNumber">ContactNumber</label>
+                <input minlength="10"  required #contact="ngModel" type="text" pattern="[- +()0-9]+" class="form-control" placeholder="contactNumber" id="contactNumber"
+                    [(ngModel)]="passenger.contactNumber" name="contactNumber">
+                    <small *ngIf="contact.errors?.['required'] && (contact?.dirty || contact?.touched) " class="text-danger">ContactNumber is Required</small>
+                    <small *ngIf="contact.errors?.['pattern']" class="text-danger">Invalid Contact Number</small>
+                    <small *ngIf="contact.errors?.['minlength']" class="text-danger">Contact number should be 10 length</small>
+            </div>
+            <div class="col-auto gender">
+                <label for="gender">Gender:</label>
+                <input #gender="ngModel" value="male" type="radio" class="form-control" placeholder="gender" id="gender" [(ngModel)]="passenger.gender"
+                    name="gender">Male
+                 <input #gender="ngModel" value="female" type="radio" class="form-control" placeholder="gender" id="gender" [(ngModel)]="passenger.gender"
+                    name="gender">Female
+                <input #gender="ngModel" value="others" type="radio" class="form-control" placeholder="gender" id="gender" [(ngModel)]="passenger.gender"
+                    name="gender">Others
+                    <small *ngIf="gender.errors?.['required'] && (gender?.dirty || gender?.touched)" class="text-danger">Gender is required</small>
+            </div>
+            <div class="col-auto">
+                <label for="email">Email</label>
+                <input type="text" email required #email="ngModel" class="form-control" placeholder="Email" id="email" [(ngModel)]="passenger.email"
+                    name="email">
+                    <small *ngIf="email.errors?.['required'] && (email?.dirty || email?.touched)" class="text-danger">Email is required</small>
+                    <small *ngIf="email.errors?.['email']"  class="text-danger">Invalid email</small>
+            </div>
+            <div class="col-auto">
+                <label for="seat_no">SeatNo</label>
+                <input required #seat="ngModel" type="number" class="form-control" placeholder="SeatNo" id="seat_no"
+                    [(ngModel)]="passenger.seat_no" name="seat_no">
+                    <small *ngIf="seat.errors?.['required'] && (seat?.dirty || seat?.touched) "></small>
+            </div>
+        </div>
+        <div class="col-auto">
+            <button  class="btn btn-warning down1" [disabled]="!f.valid" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+
+<div class="box">
+    <div>
+        <div style="color:deepskyblue;font-weight: bold;margin-left: 20px;font-size: 20px;">Passengers List</div>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Passenger_name</th>
+                <th>Age</th>
+                <th>contactNumber</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>SeatNo</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let passenger of passengerList2">
+                <td>{{passenger.passenger_name}}</td>
+                <td>{{passenger.age}}</td>
+                <td>{{passenger.contactNumber}}</td>
+                <td>{{passenger.gender}}</td>
+                <td>{{passenger.email}}</td>
+                <td>{{passenger.seat_no}}</td>
+                <td>
+                <button mat-fab color="primary" (click)="delete(passenger.passengerId!)"><mat-icon>delete</mat-icon></button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

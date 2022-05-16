@@ -1,27 +1,29 @@
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>TrainNo</th>
-            <th>TrainName</th>
-            <th>From</th>
-            <th>To</th>
-            <th>DepartureTime</th>
-            <th>ArrivalTime</th>
-            <th>Classes</th>
-            <th>Quota</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let train of trains">
-            <td> {{ train.trainNo }} </td>
-            <td> {{ train.trainName }} </td>
-            <td> {{ train.depatureStation }} </td>
-            <td> {{ train.arrivalStation }} </td>
-            <td> {{ train.depatureTime}}</td>
-            <td> {{ train.arrivalTime}}</td>
-            <td>{{ train.classes}}</td>
-            <td>{{train.quota}}</td>
-        </tr>
-    </tbody>
-</table>
+<div class="down">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>TrainNo</th>
+                <th>TrainName</th>
+                <th>From</th>
+                <th>To</th>
+                <th>DepartureTime</th>
+                <th>ArrivalTime</th>
+                <th>Quota</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let train of trains">
+                <td> {{ train.trainNo }} </td>
+                <td> {{ train.trainName }} </td>
+                <td> {{ train.depatureStation }} </td>
+                <td> {{ train.arrivalStation }} </td>
+                <td> {{ train.depatureTime}}</td>
+                <td> {{ train.arrivalTime}}</td>
+                <td>{{train.quota}}</td>
+                <td><button mat-fab color="accent" (click)="updateTrain(train.trainNo!)"><mat-icon>edit</mat-icon></button>
+                    <button mat-fab color="primary" (click)="deleteTrain(train.trainNo!)"><mat-icon>delete</mat-icon></button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

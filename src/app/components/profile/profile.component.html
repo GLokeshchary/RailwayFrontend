@@ -11,11 +11,11 @@
     </p>
     <p>
       <strong>Email:</strong>
-      {{ currentUser.email }}
+      {{email}}
     </p>
     <strong>Roles:</strong>
     <ul>
-      <li *ngFor="let role of currentUser.roles">
+      <li *ngFor="let role of roles">
         {{ role }}
       </li>
     </ul>

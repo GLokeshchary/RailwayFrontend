@@ -32,18 +32,10 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     const datePipe = new DatePipe('en-Us');
     this.now = datePipe.transform(new Date(), 'yyyy-MM-dd');
-    this.userService.getPublicContent().subscribe(
-      data => {
-        this.content = data;
-      },
-      err => {
-        this.content = JSON.parse(err.error).message;
-      }
-    );
   }
   onSwap(demo1: any,demo2: any){
-    this.demo1=demo1;
-    this.demo2=demo2;
+    this.demo1=demo2;
+    this.demo2=demo1;
 
   }
 
@@ -59,10 +51,7 @@ export class HomeComponent implements OnInit {
     this.goingTo=userForm.value.goingTo;
     this.Date=userForm.value.Date;
     console.log(this.DepartFrom);
-    this.route.navigate(['/search',this.DepartFrom,this.goingTo])
-    
-
-    this.trainservice.getTrainsBetweenStations(this.DepartFrom,this.goingTo).subscribe(data=>this.trains=data);
+    this.route.navigate(['/search',this.DepartFrom,this.goingTo]);
   }
   onClick1():void{
     this.route.navigate(["/contact"]);
