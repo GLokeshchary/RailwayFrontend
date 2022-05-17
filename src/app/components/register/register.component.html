@@ -8,7 +8,7 @@
 
           <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate
               class="mt-5 p-5">
-              <h5 class="text-primary mb-3">Login </h5>
+              <h2 class="text-primary mb-3">SignUP </h2>
               <label for="username">Username</label>
               <div class="form-floating mb-3">
                   <input type="text" class="form-control" name="username" [(ngModel)]="form.username" required
@@ -55,7 +55,7 @@
                       Signup failed!<br />{{ errorMessage }}
                   </div>
               </div>
-              <a routerLink="/register" class="text-primary" style="text-decoration: none;">Need account ? </a>
+              <a routerLink="/login" class="text-primary" style="text-decoration: none;">Already Have An account ? </a>
           </form>
 
       </div>

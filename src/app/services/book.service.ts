@@ -27,6 +27,10 @@ export class BookService {
     const baseurl=`http://localhost:3333/customer/savePassenger`;
     return this.http.post<Passenger>(`${baseurl}`,passenger);
   }
+  cancelTicketByPNR(pnr:number,email:string,bookedTicket:BookedTicket):Observable<BookTicket>{
+    const url=`http://localhost:3333/customer/cancelBookedTicketByPNR/${pnr}/${email}`;
+    return this.http.put<BookTicket>(`${url}`,bookedTicket);
+  }
   getAllPassengers():Observable<Passenger[]>{
     const url=`http://localhost:3333/customer/getAllPassengers`;
     return this.http.get<Passenger[]>(`${url}`);

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Seat } from 'src/app/models/seat';
 import { Train } from 'src/app/models/train';
 import { AdminService } from 'src/app/services/admin.service';
 import { TrainService } from 'src/app/services/train.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-train',
@@ -21,7 +23,7 @@ export class AddTrainComponent implements OnInit {
   train:Train=new Train();
   trainNo:string|undefined;
   DepartFromList=["Hyderabad","Mumbai","Chennai","Banglore"];
-  constructor(private adminservice:AdminService,private trainservice:TrainService) { }
+  constructor(private adminservice:AdminService,private trainservice:TrainService,private router:Router) { }
 
   ngOnInit(): void {
     this.trainNo=this.train.trainNo;
@@ -30,6 +32,14 @@ export class AddTrainComponent implements OnInit {
     console.log(this.train);
     this.trainservice.saveTrain(this.train).subscribe(data=>console.log(data),error=>console.log(error));
     console.log("saved ");
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Your Train has been saved',
+      showConfirmButton: false,
+      timer: 1500
+    })
+    this.router.navigate(['/admindashboard']);
     
   }
   Sleeper(sl:NgForm){

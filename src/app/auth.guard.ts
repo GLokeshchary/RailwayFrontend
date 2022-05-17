@@ -12,7 +12,7 @@ export class AuthGuard implements CanActivate {
   constructor(private tokenstorage:TokenStorageService,private router:Router){}
 
   canActivate():boolean{
-    this.isLoggedin=!this.tokenstorage.getToken();
+    this.isLoggedin=!!this.tokenstorage.getToken();
 
     if (this.isLoggedin) {
       return true;

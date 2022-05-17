@@ -1,0 +1,26 @@
+.example img {
+    width: 100%;
+    position: absolute;
+  }
+  
+  .example .overlay {
+    color: rgb(9, 29, 178);
+    font-weight: 900;
+    font-size: 80px;
+    position: absolute;
+    top: 200px;
+    left: 480px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  .form1{
+      position: absolute;
+      top:300px;
+      left: 350px;
+      color: rgb(9, 29, 178);
+  }
+  .form1 .display{
+      display: flex;
+      padding:20px;
+      font-size: 30px;
+      font-weight: bold;
+  }

@@ -1,1 +1,16 @@
-<p>cancel works!</p>
+<div class="example">
+    <img class="background-image" src="assets/images/train1.jpg">
+    <div class="overlay">Canel Tickets </div>
+    <div class="form1">
+        <form #f="ngForm" novalidate (ngSubmit)="onSubmit()">
+            <div class="display">
+                <div>
+                    <label for="pnr">Enter PNR Number :</label>
+                    <input type="number" required #t="ngModel" minlength="6" name="pnr" id="pnr" [(ngModel)]="userpnr">
+                    <small class="text-danger" *ngIf="t.errors?.['required'] && ( t.dirty || t.touched)">PNR is required</small>
+                    
+                        <button [disabled]="!f.valid" type="submit" class="btn btn-warning">Check</button>
+                </div>
+            </div>
+        </form>
+    </div>

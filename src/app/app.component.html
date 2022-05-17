@@ -10,7 +10,7 @@
           <li><a routerLink="/contact"><i class="fa fa-phone-square" aria-hidden="true"></i>ContactUs</a></li>
           <li><a routerLink="/about"><i class="fa fa-train" aria-hidden="true"></i>About</a></li>
           <li *ngIf="isLoggedIn"><a routerLink="/checkTickets"><i class="fa fa-book" aria-hidden="true"></i>Check Tickets</a></li>
-          <li *ngIf="isLoggedIn"><a href=""><i class="fa fa-users" aria-hidden="true"></i>Cancel Tickets</a></li>
+          <li *ngIf="isLoggedIn"><a routerLink="/cancel"><i class="fa fa-users" aria-hidden="true"></i>Cancel Tickets</a></li>
           <li *ngIf="showAdminBoard"><a routerLink="/admindashboard"><i class="fa fa-lock" aria-hidden="true"></i>Admin</a></li>
       </ul>
   </div>

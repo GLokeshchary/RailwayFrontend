@@ -11,6 +11,7 @@ import { BookAc3Component } from './components/book-ac3/book-ac3.component';
 import { BookSLComponent } from './components/book-sl/book-sl.component';
 import { BookSsComponent } from './components/book-ss/book-ss.component';
 import { BookedTicketsComponent } from './components/booked-tickets/booked-tickets.component';
+import { CancelComponent } from './components/cancel/cancel.component';
 import { CheckticketsComponent } from './components/checktickets/checktickets.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { FaqComponent } from './components/faq/faq.component';
@@ -41,15 +42,16 @@ const routes: Routes = [
   {path:"about",component:AboutComponent},
   {path:"admin",component:AdminComponent},
   {path:"login",component:LoginComponent},
-  {path:"profile",component:ProfileComponent},
+  {path:"profile",component:ProfileComponent,canActivate:[AuthGuard]},
   {path:"admindashboard",component:AdminDashboardComponent,children:[{path:"createtrain",component:AddTrainComponent},
-                                                                     {path:"Trainlist",component:TrainListComponent}]},
+                                                                     {path:"Trainlist",component:TrainListComponent}],canActivate:[AuthGuard]},
   {path:"faq",component:FaqComponent},
-  {path:"updatePassenger/:id",component:UpdatepassengerComponent},
-  {path:"updateTrain/:trainNo",component:UpdatetrainComponent},
-  {path:"checkTickets",component:CheckticketsComponent},
+  {path:"cancel",component:CancelComponent,canActivate:[AuthGuard]},
+  {path:"updatePassenger/:id",component:UpdatepassengerComponent,canActivate:[AuthGuard]},
+  {path:"updateTrain/:trainNo",component:UpdatetrainComponent,canActivate:[AuthGuard]},
+  {path:"checkTickets",component:CheckticketsComponent,canActivate:[AuthGuard]},
   {path:"footer",component:FooterComponent},
-  {path:"payment/:trainNo/:coach/:totalamount",component:PaymentComponent},
+  {path:"payment/:trainNo/:coach/:totalamount",component:PaymentComponent,canActivate:[AuthGuard]},
   {path:"navbar",component:NavbarComponent},
   
   {path:'',redirectTo:"home",pathMatch:"full"}

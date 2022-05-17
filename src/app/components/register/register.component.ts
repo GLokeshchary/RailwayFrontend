@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +18,7 @@ export class RegisterComponent implements OnInit {
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,private router:Router) { }
   ngOnInit(): void {
   }
   onSubmit(): void {
@@ -32,6 +34,16 @@ export class RegisterComponent implements OnInit {
         this.isSignUpFailed = true;
       }
     );
+   
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'User Registerd Successfully',
+        showConfirmButton: true,
+        timer: 1500
+      });
+      this.router.navigate(['/login']);
+    
   }
 
 }
