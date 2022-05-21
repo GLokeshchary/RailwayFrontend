@@ -16,7 +16,7 @@
   </div>
   <div class="links4">
       <ul class="display">
-
+          
           <li *ngIf="!isLoggedIn"><a routerLink="/login"><i class="fa fa-sign-in" aria-hidden="true"></i>Login</a></li>
           <li *ngIf="!isLoggedIn"><a routerLink="/register"><i class="fa fa-user-plus" aria-hidden="true"></i>SignUp</a></li>
           <li *ngIf="isLoggedIn" ><a routerLink="/profile"><i class="fa fa-user-circle" aria-hidden="true"></i>{{username}}</a></li>

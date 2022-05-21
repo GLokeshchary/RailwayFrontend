@@ -1,4 +1,4 @@
-import { formatDate } from '@angular/common';
+import { DatePipe, formatDate } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { TokenStorageService } from './services/token-storage.service';
@@ -15,6 +15,7 @@ export class AppComponent {
   showAdminBoard = false;
   showAttendeeBoard = false;
   username?: string;
+  date:any;
   constructor(private tokenStorageService: TokenStorageService ,private router:Router ) { }
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
@@ -24,6 +25,7 @@ export class AppComponent {
       this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
       this.showAttendeeBoard = this.roles.includes('ROLE_ATTENDEE');
       this.username = user.username;
+      
     }
   }
   logout(): void {

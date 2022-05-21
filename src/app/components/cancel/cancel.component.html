@@ -9,7 +9,7 @@
                     <input type="number" required #t="ngModel" minlength="6" name="pnr" id="pnr" [(ngModel)]="userpnr">
                     <small class="text-danger" *ngIf="t.errors?.['required'] && ( t.dirty || t.touched)">PNR is required</small>
                     
-                        <button [disabled]="!f.valid" type="submit" class="btn btn-warning">Check</button>
+                        <button [disabled]="!f.valid" type="submit" class="btn btn-warning">Cancel</button>
                 </div>
             </div>
         </form>

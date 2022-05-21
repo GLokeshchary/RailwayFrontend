@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -7,26 +8,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
   home(){
+    this.router.navigate(['/home']);
 
   }
   about(){
-
+    this.router.navigate(['/about']);
   }
   ContactUs(){
+    this.router.navigate(['/contact']);
 
   }
   search(){
-
+    this.router.navigate(['/search']);
   }
   BookedTickets(){
-
+this.router.navigate(['/checkTickets']);
   }
   FAQ(){
+    this.router.navigate(['/faq']);
+  }
+  cancel(){
+    this.router.navigate(['/cancel']);
+  }
+  help(){
     
   }
 
